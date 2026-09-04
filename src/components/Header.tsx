@@ -1,12 +1,11 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Globe, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import Logo from "./Logo";
 
 const NAV_LINKS = [
-  { label: "Find A Class", href: "#find-a-class" },
   { label: "Why Broformer", href: "#why-broformer" },
   { label: "For Studios", href: "#for-studios" },
   { label: "The Movement", href: "#the-movement" },
@@ -61,13 +60,6 @@ export default function Header() {
             </a>
           ))}
         </nav>
-
-        <button
-          aria-label="Change language"
-          className="hidden cursor-pointer text-white/80 transition-all duration-200 hover:rotate-12 hover:text-red lg:block"
-        >
-          <Globe size={19} strokeWidth={1.75} />
-        </button>
 
         <button
           aria-label="Toggle menu"

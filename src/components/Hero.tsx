@@ -60,9 +60,10 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-6 max-w-sm text-lg text-white/85 md:text-xl"
+          className="mt-6 max-w-sm text-sm text-white/85 md:text-base"
         >
-          Find men&apos;s reformer classes around the world.
+          Reformer Pilates builds strength, mobility and core control —
+          learn why men are doing it, and find a class near you.
         </motion.p>
 
         <motion.form

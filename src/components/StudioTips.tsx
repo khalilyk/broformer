@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useRef } from "react";
 import PhotoBlock from "./PhotoBlock";
@@ -74,30 +75,36 @@ export default function StudioTips() {
               <Reveal
                 key={tip.n}
                 delay={i * 0.08}
-                className="w-[68vw] shrink-0 snap-start sm:w-[40vw] lg:w-auto"
+                className="h-full w-[68vw] shrink-0 snap-start sm:w-[40vw] lg:w-auto"
               >
-                <article className="group cursor-pointer">
-                  <div className="overflow-hidden rounded-2xl">
+                <motion.article
+                  whileHover={{ y: -6 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  className="group flex h-full cursor-pointer flex-col"
+                >
+                  <div className="overflow-hidden rounded-2xl ring-1 ring-transparent transition-shadow duration-300 group-hover:shadow-[0_16px_32px_-12px_rgba(0,0,0,0.25)] group-hover:ring-ink/5">
                     <PhotoBlock
                       label={`Studio tip ${tip.n}: ${tip.title}`}
                       glow="top"
                       className="aspect-[3/4] transition-transform duration-500 ease-out group-hover:scale-105"
                     />
                   </div>
-                  <h3 className="mt-4 text-sm font-bold text-ink">
-                    {tip.n}. {tip.title}
-                  </h3>
-                  <p className="mt-2 text-[13px] leading-relaxed text-ink/60">
-                    {tip.description}
-                  </p>
-                  <span className="mt-3 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.08em] text-red">
-                    Read more
-                    <ArrowRight
-                      size={13}
-                      className="transition-transform duration-300 group-hover:translate-x-1"
-                    />
-                  </span>
-                </article>
+                  <div className="flex flex-1 flex-col">
+                    <h3 className="mt-4 text-sm font-bold text-ink">
+                      {tip.n}. {tip.title}
+                    </h3>
+                    <p className="mt-2 text-[13px] leading-relaxed text-ink/60">
+                      {tip.description}
+                    </p>
+                    <span className="mt-auto inline-flex w-fit items-center gap-1.5 pt-3 text-xs font-bold uppercase tracking-[0.08em] text-red">
+                      Read more
+                      <ArrowRight
+                        size={13}
+                        className="transition-transform duration-300 group-hover:translate-x-1"
+                      />
+                    </span>
+                  </div>
+                </motion.article>
               </Reveal>
             ))}
           </div>

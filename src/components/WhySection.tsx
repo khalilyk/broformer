@@ -58,7 +58,7 @@ const BENEFITS = [
 
 export default function WhySection() {
   return (
-    <section id="why-broformer" className="bg-cream py-20 md:py-28">
+    <section id="why-broformer" className="bg-paper py-20 md:py-28">
       <div className="container-x">
         <Reveal className="text-center">
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-red">

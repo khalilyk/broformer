@@ -47,6 +47,16 @@ body {
   }
 }
 
+section[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+@media (min-width: 768px) {
+  section[id] {
+    scroll-margin-top: 6.5rem;
+  }
+}
+
 .underline-hover {
   position: relative;
 }

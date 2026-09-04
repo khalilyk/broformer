@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { BadgeCheck, CalendarCheck, TrendingUp, Users } from "lucide-react";
+import PhotoBlock from "./PhotoBlock";
 import Reveal from "./Reveal";
 
 const POINTS = [
@@ -61,23 +62,29 @@ export default function StudioCta() {
           </div>
         </Reveal>
 
-        <div className="grid flex-1 grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-4 lg:gap-x-8">
+        <div className="grid flex-1 grid-cols-2 gap-5 lg:grid-cols-4">
           {POINTS.map((point, i) => (
             <Reveal key={point.title} delay={i * 0.08}>
-              <motion.div
-                whileHover={{ y: -5 }}
+              <motion.article
+                whileHover={{ y: -6 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="group cursor-default"
               >
-                <span className="grid h-12 w-12 place-items-center rounded-full border border-red/40 text-red transition-colors duration-300 hover:bg-red hover:text-white">
-                  <point.icon size={22} strokeWidth={1.5} />
-                </span>
+                <div className="overflow-hidden rounded-2xl ring-1 ring-white/10 transition-shadow duration-300 group-hover:ring-red/40 group-hover:shadow-[0_12px_30px_-8px_rgba(227,30,36,0.35)]">
+                  <PhotoBlock
+                    label={point.title}
+                    glow="center"
+                    icon={point.icon}
+                    className="aspect-square transition-transform duration-500 ease-out group-hover:scale-105"
+                  />
+                </div>
                 <h3 className="mt-4 text-sm font-bold text-white">
                   {point.title}
                 </h3>
                 <p className="mt-2 text-[13px] leading-relaxed text-white/55">
                   {point.description}
                 </p>
-              </motion.div>
+              </motion.article>
             </Reveal>
           ))}
         </div>
