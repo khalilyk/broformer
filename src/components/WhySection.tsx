@@ -69,7 +69,7 @@ export default function WhySection() {
           </h2>
         </Reveal>
 
-        <div className="mt-14 grid grid-cols-2 gap-x-6 gap-y-12 sm:grid-cols-4 lg:grid-cols-8 lg:gap-x-4">
+        <div className="mt-14 grid grid-cols-2 gap-x-8 gap-y-14 sm:grid-cols-4 lg:gap-x-10 lg:gap-y-16">
           {BENEFITS.map((benefit, i) => (
             <Reveal key={benefit.title} delay={i * 0.05}>
               <motion.div
@@ -77,17 +77,17 @@ export default function WhySection() {
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 className="group flex cursor-default flex-col items-center text-center"
               >
-                <span className="grid h-16 w-16 place-items-center rounded-full border border-red/30 text-red transition-colors duration-300 group-hover:border-red group-hover:bg-red group-hover:text-white">
+                <span className="grid h-24 w-24 place-items-center rounded-full border border-red/30 text-red transition-colors duration-300 group-hover:border-red group-hover:bg-red group-hover:text-white">
                   <benefit.icon
-                    size={28}
+                    size={40}
                     strokeWidth={1.5}
                     className="transition-transform duration-300 group-hover:scale-110"
                   />
                 </span>
-                <h3 className="mt-4 text-xs font-bold uppercase tracking-[0.12em] text-ink">
+                <h3 className="mt-5 text-base font-bold uppercase tracking-[0.1em] text-ink md:text-lg">
                   {benefit.title}
                 </h3>
-                <p className="mt-2 text-[13px] leading-relaxed text-ink/60">
+                <p className="mt-2 text-sm leading-relaxed text-ink/60">
                   {benefit.description}
                 </p>
               </motion.div>

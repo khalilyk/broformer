@@ -10,7 +10,7 @@ export default function Newsletter() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <section className="relative z-10 -mt-14 bg-cream pb-20 md:-mt-20 md:pb-28">
+    <section className="relative z-10 bg-cream py-20 md:py-28">
       <div className="container-x">
         <Reveal>
           <div className="relative overflow-hidden rounded-3xl shadow-2xl shadow-black/40">
