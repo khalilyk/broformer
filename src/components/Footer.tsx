@@ -1,3 +1,5 @@
+import Link from "next/link";
+import GlowLink from "./GlowLink";
 import Logo from "./Logo";
 import { FacebookIcon, InstagramIcon, YoutubeIcon } from "./SocialIcons";
 
@@ -5,30 +7,30 @@ const COLUMNS = [
   {
     title: "Explore",
     links: [
-      { label: "Find A Class", href: "#find-a-class" },
-      { label: "Why Broformer", href: "#why-broformer" },
-      { label: "The Movement", href: "#the-movement" },
-      { label: "Journal", href: "#journal" },
-      { label: "About", href: "#about" },
+      { label: "Find A Class", href: "/find-a-class" },
+      { label: "Why Broformer", href: "/#why-broformer" },
+      { label: "The Movement", href: "/#the-movement" },
+      { label: "Journal", href: "/journal" },
+      { label: "About", href: "/about" },
     ],
   },
   {
     title: "For Studios",
     links: [
-      { label: "List Your Studio", href: "#list-your-studio" },
-      { label: "Start a Broformer Class", href: "#find-a-class" },
-      { label: "Studio Resources", href: "#for-studios" },
-      { label: "Partner With Us", href: "#for-studios" },
-      { label: "Log In", href: "#login" },
+      { label: "List Your Studio", href: "/list-your-studio" },
+      { label: "Start a Broformer Class", href: "/start-a-class" },
+      { label: "Studio Resources", href: "/studio-resources" },
+      { label: "Partner With Us", href: "/partner-with-us" },
+      { label: "Log In", href: "/login" },
     ],
   },
   {
     title: "Support",
     links: [
-      { label: "FAQ", href: "#faq" },
-      { label: "Contact Us", href: "#contact" },
-      { label: "Privacy Policy", href: "#privacy" },
-      { label: "Terms & Conditions", href: "#terms" },
+      { label: "FAQ", href: "/faq" },
+      { label: "Contact Us", href: "/contact" },
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Terms & Conditions", href: "/terms" },
     ],
   },
 ];
@@ -46,7 +48,9 @@ export default function Footer() {
     <footer className="bg-ink pt-16">
       <div className="container-x grid grid-cols-1 gap-12 pb-12 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1fr]">
         <div>
-          <Logo className="text-3xl" />
+          <Link href="/">
+            <Logo className="text-3xl" />
+          </Link>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/55">
             The global home of men&apos;s reformer Pilates. Connecting men
             with studios and building a stronger, more mobile world.
@@ -75,12 +79,12 @@ export default function Footer() {
             <ul className="mt-5 space-y-3">
               {col.links.map((link) => (
                 <li key={link.label}>
-                  <a
+                  <GlowLink
                     href={link.href}
-                    className="underline-hover text-sm text-white/80 transition-colors hover:text-white"
+                    className="text-sm text-white/80 transition-colors hover:text-white"
                   >
                     {link.label}
-                  </a>
+                  </GlowLink>
                 </li>
               ))}
             </ul>

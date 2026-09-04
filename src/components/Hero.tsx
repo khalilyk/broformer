@@ -3,8 +3,11 @@
 import { motion } from "framer-motion";
 import { MapPin, Search } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useTypewriter } from "@/hooks/useTypewriter";
+import GlowLink from "./GlowLink";
 
 const POPULAR_CITIES = [
   "Sydney",
@@ -29,6 +32,7 @@ const SEARCH_PROMPTS = [
 export default function Hero() {
   const [query, setQuery] = useState("");
   const typed = useTypewriter(SEARCH_PROMPTS);
+  const router = useRouter();
 
   return (
     <section id="top" className="relative isolate flex min-h-[92vh] items-end overflow-hidden bg-ink pt-24 md:min-h-[95vh] md:pt-28">
@@ -70,7 +74,12 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          onSubmit={(e) => e.preventDefault()}
+          onSubmit={(e) => {
+            e.preventDefault();
+            router.push(
+              query ? `/find-a-class?city=${encodeURIComponent(query)}` : "/find-a-class"
+            );
+          }}
           className="mt-8 flex max-w-xl gap-2"
         >
           <div className="flex flex-1 items-center gap-3 rounded-full bg-white px-5 py-3.5 shadow-lg transition-shadow focus-within:shadow-xl focus-within:ring-2 focus-within:ring-red/40 md:py-4">
@@ -105,38 +114,45 @@ export default function Hero() {
             Popular Cities
           </span>
           {POPULAR_CITIES.map((city) => (
-            <a
+            <GlowLink
               key={city}
-              href="#find-a-class"
-              className="underline-hover text-sm text-white/85 transition-colors hover:text-white"
+              href={`/find-a-class?city=${encodeURIComponent(city)}`}
+              className="text-sm text-white/85 transition-colors hover:text-white"
             >
               {city}
-            </a>
+            </GlowLink>
           ))}
-          <a
-            href="#find-a-class"
+          <Link
+            href="/find-a-class"
             className="group inline-flex items-center gap-1 text-sm font-semibold text-red transition-colors hover:text-white"
           >
             View all cities
             <span className="transition-transform duration-200 group-hover:translate-x-1">
               →
             </span>
-          </a>
+          </Link>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-6"
+          className="mt-6 flex flex-wrap gap-3"
         >
-          <a
-            href="#list-your-studio"
-            className="group relative inline-flex overflow-hidden rounded-full border border-white/70 px-6 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-white transition-colors duration-300 hover:border-red"
-          >
-            <span className="absolute inset-0 -translate-x-full bg-red transition-transform duration-300 ease-out group-hover:translate-x-0" />
-            <span className="relative">List Your Studio</span>
-          </a>
+          {[
+            { label: "List Your Studio", href: "/list-your-studio" },
+            { label: "Buy Gear", href: "/shop" },
+            { label: "Learn More", href: "/#why-broformer" },
+          ].map((pill) => (
+            <Link
+              key={pill.label}
+              href={pill.href}
+              className="group relative inline-flex overflow-hidden rounded-full border border-white/70 px-6 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-white transition-colors duration-300 hover:border-red"
+            >
+              <span className="absolute inset-0 -translate-x-full bg-red transition-transform duration-300 ease-out group-hover:translate-x-0" />
+              <span className="relative">{pill.label}</span>
+            </Link>
+          ))}
         </motion.div>
       </div>
     </section>

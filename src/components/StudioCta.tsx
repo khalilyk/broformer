@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { BadgeCheck, CalendarCheck, TrendingUp, Users } from "lucide-react";
+import Link from "next/link";
 import PhotoBlock from "./PhotoBlock";
 import Reveal from "./Reveal";
 
@@ -46,19 +47,18 @@ export default function StudioCta() {
             looking for reformer classes.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
-            <a
-              id="list-your-studio"
-              href="#list-your-studio"
+            <Link
+              href="/list-your-studio"
               className="rounded-full bg-red px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.1em] text-white transition-all duration-300 hover:bg-white hover:text-ink active:scale-95"
             >
               List Your Studio
-            </a>
-            <a
-              href="#find-a-class"
+            </Link>
+            <Link
+              href="/start-a-class"
               className="rounded-full border border-white/40 px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.1em] text-white transition-all duration-300 hover:border-white hover:bg-white hover:text-ink active:scale-95"
             >
               Start A Broformer Class
-            </a>
+            </Link>
           </div>
         </Reveal>
 

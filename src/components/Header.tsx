@@ -2,14 +2,16 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useState } from "react";
+import GlowLink from "./GlowLink";
 import Logo from "./Logo";
 
 const NAV_LINKS = [
-  { label: "Why Broformer", href: "#why-broformer" },
-  { label: "The Movement", href: "#the-movement" },
-  { label: "For Studios", href: "#for-studios" },
-  { label: "Journal", href: "#journal" },
+  { label: "Why Broformer", href: "/#why-broformer" },
+  { label: "The Movement", href: "/#the-movement" },
+  { label: "For Studios", href: "/#for-studios" },
+  { label: "Journal", href: "/journal" },
 ];
 
 export default function Header() {
@@ -45,19 +47,19 @@ export default function Header() {
       </div>
 
       <div className="container-x flex h-16 items-center justify-between md:h-20">
-        <a href="#top" className="flex flex-col leading-none">
+        <Link href="/" className="flex flex-col leading-none">
           <Logo className="text-2xl md:text-3xl" />
-        </a>
+        </Link>
 
         <nav className="hidden items-center gap-8 lg:flex">
           {NAV_LINKS.map((link) => (
-            <a
+            <GlowLink
               key={link.label}
               href={link.href}
-              className="underline-hover text-xs font-semibold uppercase tracking-[0.12em] text-white/90 transition-colors hover:text-white"
+              className="text-xs font-semibold uppercase tracking-[0.12em] text-white/90 transition-colors hover:text-white"
             >
               {link.label}
-            </a>
+            </GlowLink>
           ))}
         </nav>
 

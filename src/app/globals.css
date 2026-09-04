@@ -59,26 +59,31 @@ section[id] {
   }
 }
 
-.underline-hover {
+.glow-link {
   position: relative;
+  isolation: isolate;
 }
 
-.underline-hover::after {
+.glow-link::before {
   content: "";
   position: absolute;
-  left: 0;
-  bottom: -4px;
-  height: 1px;
-  width: 100%;
-  background: currentColor;
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.3s ease;
+  inset: -1.6em -2em;
+  background: radial-gradient(
+    circle 60px at var(--mx, 50%) var(--my, 50%),
+    rgba(227, 30, 36, 0.9),
+    rgba(227, 30, 36, 0.4) 55%,
+    transparent 80%
+  );
+  filter: blur(6px);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  z-index: -1;
 }
 
-.underline-hover:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
+.glow-link:hover::before,
+.glow-link:focus-visible::before {
+  opacity: 1;
 }
 
 @keyframes marquee {

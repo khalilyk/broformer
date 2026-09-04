@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 import { useRef } from "react";
 import PhotoBlock from "./PhotoBlock";
 import Reveal from "./Reveal";
@@ -9,24 +9,28 @@ import Reveal from "./Reveal";
 const TIPS = [
   {
     n: "1",
+    slug: "speak-their-language",
     title: "Speak their language",
     description:
       "Use messaging that resonates with men. Focus on strength, performance and results.",
   },
   {
     n: "2",
+    slug: "create-mens-classes",
     title: "Create men's classes",
     description:
       "Dedicated men's classes remove barriers and build community. Consistency is key.",
   },
   {
     n: "3",
+    slug: "make-it-welcoming",
     title: "Make it welcoming",
     description:
       "Small changes in your space, communication and team can make a big difference.",
   },
   {
     n: "4",
+    slug: "leverage-community",
     title: "Leverage community",
     description:
       "Encourage referrals, share transformations and build a men's community.",
@@ -41,7 +45,7 @@ export default function StudioTips() {
   };
 
   return (
-    <section id="journal" className="bg-cream py-20 md:py-28">
+    <section id="tips-for-studios" className="bg-cream py-20 md:py-28">
       <div className="container-x flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-14">
         <Reveal className="lg:w-72 lg:shrink-0">
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-red">
@@ -54,8 +58,8 @@ export default function StudioTips() {
             Simple strategies that help studios attract, engage and retain
             more men in reformer Pilates classes.
           </p>
-          <a
-            href="#journal"
+          <Link
+            href="/journal"
             className="group mt-6 inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.1em] text-white transition-all duration-300 hover:bg-red"
           >
             See All Tips
@@ -63,7 +67,7 @@ export default function StudioTips() {
               size={15}
               className="transition-transform duration-300 group-hover:translate-x-1"
             />
-          </a>
+          </Link>
         </Reveal>
 
         <div className="relative flex-1">
@@ -77,10 +81,9 @@ export default function StudioTips() {
                 delay={i * 0.08}
                 className="h-full w-[68vw] shrink-0 snap-start sm:w-[40vw] lg:w-auto"
               >
-                <motion.article
-                  whileHover={{ y: -6 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  className="group flex h-full cursor-pointer flex-col"
+                <Link
+                  href={`/journal/${tip.slug}`}
+                  className="group flex h-full cursor-pointer flex-col transition-transform duration-300 ease-out hover:-translate-y-1.5"
                 >
                   <div className="overflow-hidden rounded-2xl ring-1 ring-transparent transition-shadow duration-300 group-hover:shadow-[0_16px_32px_-12px_rgba(0,0,0,0.25)] group-hover:ring-ink/5">
                     <PhotoBlock
@@ -104,7 +107,7 @@ export default function StudioTips() {
                       />
                     </span>
                   </div>
-                </motion.article>
+                </Link>
               </Reveal>
             ))}
           </div>
