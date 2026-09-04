@@ -2,6 +2,7 @@
 
 :root {
   --color-ink: #0a0a0a;
+  --color-charcoal: #221f1e;
   --color-red: #e31e24;
   --color-red-dark: #b8181d;
   --color-cream: #f4f1ec;
@@ -10,6 +11,7 @@
 
 @theme inline {
   --color-ink: var(--color-ink);
+  --color-charcoal: var(--color-charcoal);
   --color-red: var(--color-red);
   --color-red-dark: var(--color-red-dark);
   --color-cream: var(--color-cream);

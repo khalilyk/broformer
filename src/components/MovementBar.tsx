@@ -37,7 +37,7 @@ function Counter() {
 
 export default function MovementBar() {
   return (
-    <section id="the-movement" className="border-y border-white/10 bg-ink py-10 md:py-12">
+    <section id="the-movement" className="border-y border-white/10 bg-charcoal py-10 md:py-12">
       <div className="container-x flex flex-col items-start gap-8 md:flex-row md:items-center md:justify-between md:gap-6">
         <motion.div
           initial={{ opacity: 0, x: -16 }}
