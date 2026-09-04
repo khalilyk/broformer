@@ -2,8 +2,9 @@
 
 import { motion } from "framer-motion";
 import { MapPin, Search } from "lucide-react";
+import Image from "next/image";
 import { useState } from "react";
-import PhotoBlock from "./PhotoBlock";
+import { useTypewriter } from "@/hooks/useTypewriter";
 
 const POPULAR_CITIES = [
   "Sydney",
@@ -14,15 +15,30 @@ const POPULAR_CITIES = [
   "Los Angeles",
 ];
 
+const SEARCH_PROMPTS = [
+  "Try Sydney, Australia",
+  "Try Melbourne, Australia",
+  "Try London, UK",
+  "Try Dubai, UAE",
+  "Try New York, USA",
+  "Try Los Angeles, USA",
+  "Try Tokyo, Japan",
+  "Try Toronto, Canada",
+];
+
 export default function Hero() {
   const [query, setQuery] = useState("");
+  const typed = useTypewriter(SEARCH_PROMPTS);
 
   return (
-    <section id="top" className="relative isolate flex min-h-[92vh] items-end overflow-hidden bg-ink pt-16 md:min-h-[95vh] md:pt-20">
-      <PhotoBlock
-        label="A man training on a Pilates reformer machine"
-        glow="bottom"
-        className="absolute inset-0 -z-10"
+    <section id="top" className="relative isolate flex min-h-[92vh] items-end overflow-hidden bg-ink pt-28 md:min-h-[95vh] md:pt-36">
+      <Image
+        src="/header.png"
+        alt="A man training on a Pilates reformer machine"
+        fill
+        priority
+        sizes="100vw"
+        className="absolute inset-0 -z-10 object-cover"
       />
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black via-black/40 to-black/10" />
 
@@ -62,7 +78,7 @@ export default function Hero() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               type="text"
-              placeholder="Enter suburb, city or postcode"
+              placeholder={typed}
               className="w-full bg-transparent text-sm text-ink placeholder:text-ink/45 focus:outline-none md:text-base"
             />
           </div>
