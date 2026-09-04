@@ -16,14 +16,14 @@ const POPULAR_CITIES = [
 ];
 
 const SEARCH_PROMPTS = [
-  "Try Sydney, Australia",
-  "Try Melbourne, Australia",
-  "Try London, UK",
-  "Try Dubai, UAE",
-  "Try New York, USA",
-  "Try Los Angeles, USA",
-  "Try Tokyo, Japan",
-  "Try Toronto, Canada",
+  "Sydney, Australia",
+  "Melbourne, Australia",
+  "London, UK",
+  "Dubai, UAE",
+  "New York, USA",
+  "Los Angeles, USA",
+  "Tokyo, Japan",
+  "Toronto, Canada",
 ];
 
 export default function Hero() {
@@ -31,7 +31,7 @@ export default function Hero() {
   const typed = useTypewriter(SEARCH_PROMPTS);
 
   return (
-    <section id="top" className="relative isolate flex min-h-[92vh] items-end overflow-hidden bg-ink pt-28 md:min-h-[95vh] md:pt-36">
+    <section id="top" className="relative isolate flex min-h-[92vh] items-end overflow-hidden bg-ink pt-24 md:min-h-[95vh] md:pt-28">
       <Image
         src="/header.png"
         alt="A man training on a Pilates reformer machine"
@@ -120,6 +120,21 @@ export default function Hero() {
             <span className="transition-transform duration-200 group-hover:translate-x-1">
               →
             </span>
+          </a>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-6"
+        >
+          <a
+            href="#list-your-studio"
+            className="group relative inline-flex overflow-hidden rounded-full border border-white/70 px-6 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-white transition-colors duration-300 hover:border-red"
+          >
+            <span className="absolute inset-0 -translate-x-full bg-red transition-transform duration-300 ease-out group-hover:translate-x-0" />
+            <span className="relative">List Your Studio</span>
           </a>
         </motion.div>
       </div>

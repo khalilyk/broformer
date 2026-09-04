@@ -39,53 +39,43 @@ export default function Header() {
           : "bg-gradient-to-b from-black/70 via-black/30 to-transparent"
       }`}
     >
-      <div className="container-x relative flex flex-col items-center py-3 md:py-4">
-        <a href="#top" className="flex flex-col items-center text-center leading-none">
+      <div className="w-full bg-red py-1.5 text-center">
+        <span className="text-[9px] font-semibold uppercase tracking-[0.2em] text-white md:text-[11px]">
+          The Global Home of Men&apos;s Reformer Pilates
+        </span>
+      </div>
+
+      <div className="container-x flex h-16 items-center justify-between md:h-20">
+        <a href="#top" className="flex flex-col leading-none">
           <Logo className="text-2xl md:text-3xl" />
-          <span className="hidden text-[9px] font-medium uppercase tracking-[0.18em] text-white/70 md:block">
-            The Global Home of Men&apos;s Reformer Pilates
-          </span>
         </a>
+
+        <nav className="hidden items-center gap-8 lg:flex">
+          {NAV_LINKS.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              className="underline-hover text-xs font-semibold uppercase tracking-[0.12em] text-white/90 transition-colors hover:text-white"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+
+        <button
+          aria-label="Change language"
+          className="hidden cursor-pointer text-white/80 transition-all duration-200 hover:rotate-12 hover:text-red lg:block"
+        >
+          <Globe size={19} strokeWidth={1.75} />
+        </button>
 
         <button
           aria-label="Toggle menu"
           onClick={() => setOpen((o) => !o)}
-          className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-white lg:hidden"
+          className="cursor-pointer text-white lg:hidden"
         >
           {open ? <X size={26} /> : <Menu size={26} />}
         </button>
-
-        <div className="mt-3 hidden items-center gap-8 lg:flex">
-          <nav className="flex items-center gap-8">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="underline-hover text-xs font-semibold uppercase tracking-[0.12em] text-white/90 transition-colors hover:text-white"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
-
-          <div className="h-4 w-px bg-white/15" />
-
-          <div className="flex items-center gap-5">
-            <button
-              aria-label="Change language"
-              className="cursor-pointer text-white/80 transition-all duration-200 hover:rotate-12 hover:text-red"
-            >
-              <Globe size={19} strokeWidth={1.75} />
-            </button>
-            <a
-              href="#list-your-studio"
-              className="group relative overflow-hidden rounded-full border border-white/70 px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.1em] text-white transition-colors duration-300 hover:border-red"
-            >
-              <span className="absolute inset-0 -translate-x-full bg-red transition-transform duration-300 ease-out group-hover:translate-x-0" />
-              <span className="relative">List Your Studio</span>
-            </a>
-          </div>
-        </div>
       </div>
 
       <AnimatePresence>
@@ -111,13 +101,6 @@ export default function Header() {
                   {link.label}
                 </motion.a>
               ))}
-              <a
-                href="#list-your-studio"
-                onClick={() => setOpen(false)}
-                className="mt-4 rounded-full bg-red px-5 py-3 text-center text-xs font-semibold uppercase tracking-[0.1em] text-white transition-transform active:scale-95"
-              >
-                List Your Studio
-              </a>
             </nav>
           </motion.div>
         )}
