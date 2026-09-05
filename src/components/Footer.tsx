@@ -1,5 +1,6 @@
 import Link from "next/link";
 import GlowLink from "./GlowLink";
+import GoalCounter from "./GoalCounter";
 import Logo from "./Logo";
 import { FacebookIcon, InstagramIcon, YoutubeIcon } from "./SocialIcons";
 
@@ -48,9 +49,10 @@ export default function Footer() {
         <span className="text-xs font-semibold uppercase tracking-[0.2em] text-red">
           Our Goal
         </span>
-        <div className="mt-3 font-display text-6xl text-red sm:text-7xl md:text-8xl">
-          1,000,000
-        </div>
+        <GoalCounter
+          target={1_000_000}
+          className="mt-3 font-display text-6xl tabular-nums text-red sm:text-7xl md:text-8xl"
+        />
         <p className="mt-2 text-sm font-semibold uppercase tracking-[0.1em] text-white/60">
           Men Moving Worldwide
         </p>
@@ -80,7 +82,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="container-x grid grid-cols-1 gap-10 py-12 text-center sm:grid-cols-3 sm:text-left">
+      <div className="container-x mx-auto grid max-w-3xl grid-cols-1 gap-10 py-12 text-center sm:grid-cols-3">
         {COLUMNS.map((col) => (
           <div key={col.title}>
             <h4 className="text-xs font-semibold uppercase tracking-[0.16em] text-white/50">

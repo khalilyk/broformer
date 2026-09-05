@@ -1,15 +1,32 @@
 "use client";
 
-import { CheckCircle2 } from "lucide-react";
+import { BadgeCheck, CalendarCheck, CheckCircle2, ListChecks, PenTool } from "lucide-react";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import PageBanner from "@/components/PageBanner";
 import Reveal from "@/components/Reveal";
 
 const BENEFITS = [
-  "Free listing in the Broformer studio directory",
-  "Direct bookings from men actively searching for classes",
-  "Access to the studio resources & marketing playbook",
-  "Optional co-branding as an official Broformer studio",
+  {
+    icon: ListChecks,
+    title: "Free Listing",
+    description: "Get discovered in the Broformer studio directory — no cost, ever.",
+  },
+  {
+    icon: CalendarCheck,
+    title: "Direct Bookings",
+    description: "Connect with men actively searching for classes near them.",
+  },
+  {
+    icon: PenTool,
+    title: "Studio Resources",
+    description: "Access our marketing playbook and men's-class messaging guides.",
+  },
+  {
+    icon: BadgeCheck,
+    title: "Co-Branding",
+    description: "Run officially branded Broformer classes if it's a fit for you.",
+  },
 ];
 
 export default function ListYourStudioPage() {
@@ -29,16 +46,31 @@ export default function ListYourStudioPage() {
             <h2 className="font-display text-2xl uppercase text-ink sm:text-3xl">
               Why studios list on Broformer
             </h2>
-            <ul className="mt-6 space-y-4">
-              {BENEFITS.map((benefit) => (
-                <li key={benefit} className="flex items-start gap-3">
-                  <CheckCircle2 size={20} className="mt-0.5 shrink-0 text-red" />
-                  <span className="text-[15px] leading-relaxed text-ink/70">
-                    {benefit}
-                  </span>
-                </li>
+            <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {BENEFITS.map((benefit, i) => (
+                <Reveal key={benefit.title} delay={i * 0.06}>
+                  <motion.div
+                    whileHover={{ y: -5 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    className="group flex h-full cursor-default flex-col rounded-2xl bg-paper p-5 shadow-sm ring-1 ring-ink/10 transition-colors duration-300 hover:bg-ink"
+                  >
+                    <span className="grid h-14 w-14 place-items-center rounded-full border border-red/30 bg-cream text-red transition-colors duration-300 group-hover:border-red group-hover:bg-red group-hover:text-white">
+                      <benefit.icon
+                        size={26}
+                        strokeWidth={1.5}
+                        className="transition-transform duration-300 group-hover:scale-110"
+                      />
+                    </span>
+                    <h3 className="mt-4 text-sm font-bold uppercase tracking-[0.06em] text-ink transition-colors duration-300 group-hover:text-white">
+                      {benefit.title}
+                    </h3>
+                    <p className="mt-1.5 text-[13px] leading-relaxed text-ink/60 transition-colors duration-300 group-hover:text-white/60">
+                      {benefit.description}
+                    </p>
+                  </motion.div>
+                </Reveal>
               ))}
-            </ul>
+            </div>
             <p className="mt-8 text-sm leading-relaxed text-ink/50">
               Listings are reviewed within 2 business days. There&apos;s no
               cost to list — we make money when we help you fill more
