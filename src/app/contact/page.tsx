@@ -1,6 +1,6 @@
 "use client";
 
-import { HelpCircle, Mail, MessageCircle, Store } from "lucide-react";
+import { ChevronDown, HelpCircle, Mail, MessageCircle, Store } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import PageBanner from "@/components/PageBanner";
@@ -168,10 +168,11 @@ export default function ContactPage() {
                     <span className="mb-1.5 block text-xs font-semibold uppercase tracking-[0.08em] text-ink/50">
                       Topic
                     </span>
+                    <div className="relative">
                     <select
                       required
                       defaultValue=""
-                      className="w-full rounded-xl border border-ink/15 bg-cream px-4 py-3 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-red/30"
+                      className="w-full appearance-none rounded-xl border border-ink/15 bg-cream px-4 py-3 pr-10 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-red/30"
                     >
                       <option value="" disabled>
                         Select a topic
@@ -182,6 +183,11 @@ export default function ContactPage() {
                         </option>
                       ))}
                     </select>
+                    <ChevronDown
+                      size={16}
+                      className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 text-ink/40"
+                    />
+                    </div>
                   </label>
                   <label className="block">
                     <span className="mb-1.5 block text-xs font-semibold uppercase tracking-[0.08em] text-ink/50">

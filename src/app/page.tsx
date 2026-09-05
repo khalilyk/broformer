@@ -1,6 +1,7 @@
 import GearCta from "@/components/GearCta";
 import Hero from "@/components/Hero";
 import LandscapeBand from "@/components/LandscapeBand";
+import MissionSection from "@/components/MissionSection";
 import MovementBar from "@/components/MovementBar";
 import WhySection from "@/components/WhySection";
 import StudioTips from "@/components/StudioTips";
@@ -12,6 +13,7 @@ export default function Home() {
     <main>
       <Hero />
       <MovementBar />
+      <MissionSection />
       <WhySection />
       <StudioTips />
       <GearCta />

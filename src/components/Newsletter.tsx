@@ -1,11 +1,42 @@
 "use client";
 
-import { Mail } from "lucide-react";
+import { ChevronDown, Mail } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import Reveal from "./Reveal";
 
+const MAJOR_CITIES = [
+  "London",
+  "Washington, D.C.",
+  "Ottawa",
+  "Wellington",
+  "Dublin",
+  "Berlin",
+  "Paris",
+  "Madrid",
+  "Rome",
+  "Tokyo",
+  "Singapore",
+  "Sydney",
+  "Melbourne",
+  "Brisbane",
+  "Perth",
+  "Canberra",
+  "Dubai",
+  "Abu Dhabi",
+  "Riyadh",
+  "Jeddah",
+  "Doha",
+  "Kuwait City",
+  "Manama",
+  "Muscat",
+  "Beirut",
+  "Other",
+];
+
 export default function Newsletter() {
+  const [name, setName] = useState("");
+  const [location, setLocation] = useState("");
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
@@ -42,22 +73,55 @@ export default function Newsletter() {
                   if (!email) return;
                   setSubmitted(true);
                 }}
-                className="mt-8 flex w-full max-w-md flex-col gap-3 sm:flex-row"
+                className="mt-8 flex w-full max-w-lg flex-col gap-3"
               >
-                <input
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  type="email"
-                  required
-                  placeholder="Your email"
-                  className="w-full min-w-0 rounded-full border border-white/20 bg-white/10 px-5 py-3.5 text-sm text-white placeholder:text-white/50 backdrop-blur-sm transition-shadow focus:outline-none focus:ring-2 focus:ring-red/50"
-                />
-                <button
-                  type="submit"
-                  className="shrink-0 cursor-pointer rounded-full bg-red px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.1em] text-white transition-all duration-300 hover:bg-white hover:text-ink active:scale-95"
-                >
-                  {submitted ? "Subscribed" : "Subscribe"}
-                </button>
+                <div className="flex flex-col gap-3 sm:flex-row">
+                  <input
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    type="text"
+                    required
+                    placeholder="Your name"
+                    className="w-full min-w-0 rounded-full border border-white/20 bg-white/10 px-5 py-3.5 text-sm text-white placeholder:text-white/50 backdrop-blur-sm transition-shadow focus:outline-none focus:ring-2 focus:ring-red/50"
+                  />
+                  <div className="relative w-full min-w-0">
+                    <select
+                      value={location}
+                      onChange={(e) => setLocation(e.target.value)}
+                      required
+                      className="w-full min-w-0 appearance-none rounded-full border border-white/20 bg-white/10 px-5 py-3.5 pr-11 text-sm text-white backdrop-blur-sm transition-shadow focus:outline-none focus:ring-2 focus:ring-red/50 [&>option]:text-ink"
+                    >
+                      <option value="" disabled>
+                        Nearest major city
+                      </option>
+                      {MAJOR_CITIES.map((city) => (
+                        <option key={city} value={city}>
+                          {city}
+                        </option>
+                      ))}
+                    </select>
+                    <ChevronDown
+                      size={16}
+                      className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-white/60"
+                    />
+                  </div>
+                </div>
+                <div className="flex flex-col gap-3 sm:flex-row">
+                  <input
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    type="email"
+                    required
+                    placeholder="Your email"
+                    className="w-full min-w-0 rounded-full border border-white/20 bg-white/10 px-5 py-3.5 text-sm text-white placeholder:text-white/50 backdrop-blur-sm transition-shadow focus:outline-none focus:ring-2 focus:ring-red/50"
+                  />
+                  <button
+                    type="submit"
+                    className="shrink-0 cursor-pointer rounded-full bg-red px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.1em] text-white transition-all duration-300 hover:bg-white hover:text-ink active:scale-95"
+                  >
+                    {submitted ? "Subscribed" : "Subscribe"}
+                  </button>
+                </div>
               </form>
             </div>
           </div>
