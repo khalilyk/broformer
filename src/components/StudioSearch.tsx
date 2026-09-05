@@ -35,18 +35,21 @@ const CLASS_TYPES = Array.from(
   new Set(STUDIOS.flatMap((s) => s.classTypes))
 ).sort();
 
+const CITIES = Array.from(new Set(STUDIOS.map((s) => s.city))).sort();
+
 export default function StudioSearch() {
   const searchParams = useSearchParams();
   const [query, setQuery] = useState(searchParams.get("city") ?? "");
   const [classFilter, setClassFilter] = useState<string | null>(null);
+  const [cityFilter, setCityFilter] = useState<string | null>(null);
   const typed = useTypewriter(SEARCH_PROMPTS);
 
   const results = useMemo(() => {
-    const base = searchStudios(query);
-    return classFilter
-      ? base.filter((s) => s.classTypes.includes(classFilter))
-      : base;
-  }, [query, classFilter]);
+    let list = searchStudios(query);
+    if (cityFilter) list = list.filter((s) => s.city === cityFilter);
+    if (classFilter) list = list.filter((s) => s.classTypes.includes(classFilter));
+    return list;
+  }, [query, classFilter, cityFilter]);
 
   return (
     <>
@@ -121,10 +124,28 @@ export default function StudioSearch() {
               {query ? ` matching "${query}"` : ""}
             </p>
 
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/40">
                 Filter
               </span>
+              <div className="relative">
+                <select
+                  value={cityFilter ?? ""}
+                  onChange={(e) => setCityFilter(e.target.value || null)}
+                  className="appearance-none rounded-full border border-ink/15 bg-white py-1.5 pl-4 pr-9 text-xs font-semibold text-ink/70 transition-colors focus:outline-none focus:ring-2 focus:ring-red/30"
+                >
+                  <option value="">All locations</option>
+                  {CITIES.map((city) => (
+                    <option key={city} value={city}>
+                      {city}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown
+                  size={14}
+                  className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-ink/40"
+                />
+              </div>
               <div className="relative">
                 <select
                   value={classFilter ?? ""}

@@ -100,18 +100,18 @@ export default function ListYourStudioPage() {
       />
 
       <section className="bg-cream py-16 md:py-24">
-        <div className="container-x grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.2fr] lg:items-start lg:gap-16">
-          <Reveal className="lg:sticky lg:top-28">
+        <div className="container-x">
+          <Reveal className="mx-auto max-w-3xl text-center">
             <h2 className="font-display text-3xl uppercase leading-[0.95] text-ink sm:text-4xl">
               Why studios list on Broformer
             </h2>
-            <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {BENEFITS.map((benefit, i) => (
                 <Reveal key={benefit.title} delay={i * 0.06}>
                   <motion.div
                     whileHover={{ y: -5 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="group flex h-full cursor-default flex-col rounded-2xl bg-paper p-5 shadow-sm ring-1 ring-ink/10 transition-colors duration-300 hover:bg-ink"
+                    className="group flex h-full cursor-default flex-col items-center rounded-2xl bg-paper p-5 text-center shadow-sm ring-1 ring-ink/10 transition-colors duration-300 hover:bg-ink"
                   >
                     <span className="grid h-14 w-14 place-items-center rounded-full border border-red/30 bg-cream text-red transition-colors duration-300 group-hover:border-red group-hover:bg-red group-hover:text-white">
                       <benefit.icon
@@ -137,7 +137,7 @@ export default function ListYourStudioPage() {
             </p>
           </Reveal>
 
-          <Reveal delay={0.1}>
+          <Reveal delay={0.1} className="mx-auto mt-12 max-w-xl">
             <div className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-ink/5 md:p-8">
               {submitted ? (
                 <div className="py-10 text-center">

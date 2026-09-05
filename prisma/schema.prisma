@@ -1,0 +1,90 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  ADMIN
+  EDITOR
+}
+
+enum PageStatus {
+  DRAFT
+  PUBLISHED
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  role         Role     @default(EDITOR)
+  createdAt    DateTime @default(now())
+  lastLoginAt  DateTime?
+
+  pagesUpdated Page[]       @relation("PageUpdatedBy")
+  mediaUploads MediaAsset[] @relation("MediaUploadedBy")
+  auditLogs    AuditLog[]
+}
+
+model Page {
+  id          String     @id @default(cuid())
+  slug        String     @unique
+  title       String
+  content     String     @default("")
+  status      PageStatus @default(DRAFT)
+  seo         SeoSetting?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  updatedBy   User?      @relation("PageUpdatedBy", fields: [updatedById], references: [id])
+  updatedById String?
+}
+
+model SeoSetting {
+  id              String   @id @default(cuid())
+  page            Page     @relation(fields: [pageId], references: [id], onDelete: Cascade)
+  pageId          String   @unique
+  metaTitle       String   @default("")
+  metaDescription String   @default("")
+  ogImage         String   @default("")
+  focusKeyword    String   @default("")
+  aiSummary       String   @default("")
+  indexable       Boolean  @default(true)
+  updatedAt       DateTime @updatedAt
+}
+
+model MediaAsset {
+  id           String   @id @default(cuid())
+  filename     String
+  url          String
+  contentType  String
+  size         Int
+  uploadedAt   DateTime @default(now())
+  uploadedBy   User?    @relation("MediaUploadedBy", fields: [uploadedById], references: [id])
+  uploadedById String?
+}
+
+model PageView {
+  id        String   @id @default(cuid())
+  path      String
+  referrer  String   @default("")
+  createdAt DateTime @default(now())
+
+  @@index([path])
+  @@index([createdAt])
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  action    String
+  target    String
+  actor     User?    @relation(fields: [actorId], references: [id])
+  actorId   String?
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+}

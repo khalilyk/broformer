@@ -11,7 +11,6 @@ import Logo from "./Logo";
 const NAV_LINKS = [
   { label: "The Movement", href: "/#the-movement" },
   { label: "Why Broformer", href: "/#why-broformer" },
-  { label: "Studios", href: "/studios" },
   { label: "Journal", href: "/journal" },
 ];
 
@@ -60,17 +59,28 @@ export default function Header() {
           <Logo className="text-2xl md:text-3xl" />
         </Link>
 
-        <GlowGroup className="hidden items-center gap-8 lg:flex">
-          {NAV_LINKS.map((link) => (
+        <div className="hidden items-center gap-8 lg:flex">
+          <GlowGroup className="flex items-center gap-8">
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className="text-xs font-semibold uppercase tracking-[0.12em] text-white/90 transition-colors hover:text-white"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </GlowGroup>
+
+          <motion.div whileHover={{ scale: 1.06 }} whileTap={{ scale: 0.95 }}>
             <Link
-              key={link.label}
-              href={link.href}
-              className="text-xs font-semibold uppercase tracking-[0.12em] text-white/90 transition-colors hover:text-white"
+              href="/studios"
+              className="rounded-full bg-red px-5 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-white shadow-[0_0_0_0_rgba(227,30,36,0.5)] transition-all duration-300 hover:bg-white hover:text-ink hover:shadow-[0_0_20px_2px_rgba(227,30,36,0.5)]"
             >
-              {link.label}
+              Studios
             </Link>
-          ))}
-        </GlowGroup>
+          </motion.div>
+        </div>
 
         <button
           aria-label="Toggle menu"
@@ -104,6 +114,17 @@ export default function Header() {
                   {link.label}
                 </motion.a>
               ))}
+              <motion.a
+                href="/studios"
+                onClick={() => setOpen(false)}
+                initial={{ opacity: 0, x: -12 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: NAV_LINKS.length * 0.05 }}
+                whileTap={{ scale: 0.97 }}
+                className="mt-3 rounded-full bg-red px-5 py-3 text-center text-sm font-semibold uppercase tracking-[0.1em] text-white transition-colors hover:bg-white hover:text-ink"
+              >
+                Studios
+              </motion.a>
             </nav>
           </motion.div>
         )}
