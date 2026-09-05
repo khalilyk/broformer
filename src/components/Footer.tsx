@@ -17,7 +17,6 @@ const COLUMNS = [
     title: "For Studios",
     links: [
       { label: "List Your Studio", href: "/list-your-studio" },
-      { label: "Start a Broformer Class", href: "/start-a-class" },
       { label: "Studio Resources", href: "/studio-resources" },
       { label: "Partner With Us", href: "/partner-with-us" },
       { label: "Log In", href: "/login" },
@@ -45,31 +44,43 @@ export default function Footer() {
 
   return (
     <footer className="bg-ink pt-16">
-      <div className="container-x grid grid-cols-1 gap-12 pb-12 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1fr]">
-        <div>
-          <Link href="/">
-            <Logo className="text-3xl" />
-          </Link>
-          <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/55">
-            The global home of men&apos;s reformer Pilates. Connecting men
-            with studios and building a stronger, more mobile world.
-          </p>
-          <div className="mt-6 flex gap-3">
-            {SOCIALS.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={social.label}
-                className="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-white/70 transition-all duration-300 hover:-translate-y-1 hover:border-red hover:bg-red hover:text-white"
-              >
-                <social.icon className="h-[17px] w-[17px]" />
-              </a>
-            ))}
-          </div>
+      <div className="container-x border-b border-white/10 pb-12 text-center">
+        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-red">
+          Our Goal
+        </span>
+        <div className="mt-3 font-display text-6xl text-red sm:text-7xl md:text-8xl">
+          1,000,000
         </div>
+        <p className="mt-2 text-sm font-semibold uppercase tracking-[0.1em] text-white/60">
+          Men Moving Worldwide
+        </p>
+      </div>
 
+      <div className="container-x flex flex-col items-center border-b border-white/10 py-12 text-center">
+        <Link href="/">
+          <Logo className="text-3xl" />
+        </Link>
+        <p className="mt-4 max-w-md text-sm leading-relaxed text-white/55">
+          The global home of men&apos;s reformer Pilates. Connecting men
+          with studios and building a stronger, more mobile world.
+        </p>
+        <div className="mt-6 flex gap-3">
+          {SOCIALS.map((social) => (
+            <a
+              key={social.label}
+              href={social.href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={social.label}
+              className="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-white/70 transition-all duration-300 hover:-translate-y-1 hover:border-red hover:bg-red hover:text-white"
+            >
+              <social.icon className="h-[17px] w-[17px]" />
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <div className="container-x grid grid-cols-1 gap-10 py-12 text-center sm:grid-cols-3 sm:text-left">
         {COLUMNS.map((col) => (
           <div key={col.title}>
             <h4 className="text-xs font-semibold uppercase tracking-[0.16em] text-white/50">
@@ -89,16 +100,6 @@ export default function Footer() {
             </ul>
           </div>
         ))}
-
-        <div className="rounded-2xl border border-white/10 p-6 sm:col-span-2 lg:col-span-1">
-          <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-red">
-            Our Goal
-          </span>
-          <div className="mt-2 font-display text-3xl text-red">1,000,000</div>
-          <p className="mt-1 text-xs font-semibold uppercase tracking-[0.1em] text-white/60">
-            Men Moving Worldwide
-          </p>
-        </div>
       </div>
 
       <div className="border-t border-white/10 py-6">

@@ -53,12 +53,6 @@ export default function StudioCta() {
             >
               List Your Studio
             </Link>
-            <Link
-              href="/start-a-class"
-              className="rounded-full border border-white/40 px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.1em] text-white transition-all duration-300 hover:border-white hover:bg-white hover:text-ink active:scale-95"
-            >
-              Start A Broformer Class
-            </Link>
           </div>
         </Reveal>
 
