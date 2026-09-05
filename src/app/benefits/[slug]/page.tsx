@@ -126,7 +126,7 @@ export default async function BenefitPage({
         </div>
       </section>
 
-      <section className="bg-charcoal py-16 md:py-24">
+      <section className="bg-paper py-16 md:py-24">
         <div className="container-x">
           <Reveal className="mx-auto max-w-2xl text-center">
             <span className="grid h-14 w-14 mx-auto place-items-center rounded-full border border-red/40 text-red">
@@ -135,25 +135,25 @@ export default async function BenefitPage({
             <span className="mt-5 block text-xs font-semibold uppercase tracking-[0.2em] text-red">
               FAQ
             </span>
-            <h2 className="mt-3 font-display text-3xl uppercase leading-[0.95] text-white sm:text-4xl">
+            <h2 className="mt-3 font-display text-3xl uppercase leading-[0.95] text-ink sm:text-4xl">
               Questions men ask about {benefit.title.toLowerCase()}.
             </h2>
-            <p className="mt-4 text-[15px] leading-relaxed text-white/60">
+            <p className="mt-4 text-[15px] leading-relaxed text-ink/60">
               Straight answers to the most common questions about how
               reformer Pilates builds {benefit.title.toLowerCase()}, so you
               know exactly what to expect before your first class.
             </p>
           </Reveal>
 
-          <Reveal delay={0.1} className="mx-auto mt-12 grid max-w-5xl grid-cols-1 gap-x-10 sm:grid-cols-2">
-            <div>
+          <Reveal delay={0.1} className="mx-auto mt-12 grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2">
+            <div className="rounded-2xl bg-cream px-6 sm:px-8">
               {faqColOne.map((faq, i) => (
-                <AccordionItem key={i} q={faq.q} a={faq.a} dark />
+                <AccordionItem key={i} q={faq.q} a={faq.a} />
               ))}
             </div>
-            <div>
+            <div className="rounded-2xl bg-cream px-6 sm:px-8">
               {faqColTwo.map((faq, i) => (
-                <AccordionItem key={i} q={faq.q} a={faq.a} dark />
+                <AccordionItem key={i} q={faq.q} a={faq.a} />
               ))}
             </div>
           </Reveal>
