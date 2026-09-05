@@ -76,7 +76,7 @@ export default function Hero() {
               {POPULAR_CITIES.map((city) => (
                 <Link
                   key={city}
-                  href={`/find-a-class?city=${encodeURIComponent(city)}`}
+                  href={`/studios?city=${encodeURIComponent(city)}#results`}
                   className="text-sm text-white/85 transition-colors hover:text-white"
                 >
                   {city}
@@ -84,7 +84,7 @@ export default function Hero() {
               ))}
             </GlowGroup>
             <Link
-              href="/find-a-class"
+              href="/studios#listings"
               className="group inline-flex items-center gap-1 text-sm font-semibold text-red transition-colors hover:text-white"
             >
               View all cities

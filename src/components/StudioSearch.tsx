@@ -1,10 +1,9 @@
 "use client";
 
 import { ChevronDown, MapPin, Search } from "lucide-react";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { Suspense, useMemo, useState } from "react";
-import GearCta from "@/components/GearCta";
-import PageBanner from "@/components/PageBanner";
+import { useMemo, useState } from "react";
 import PhotoBlock from "@/components/PhotoBlock";
 import Reveal from "@/components/Reveal";
 import { useTypewriter } from "@/hooks/useTypewriter";
@@ -36,15 +35,7 @@ const CLASS_TYPES = Array.from(
   new Set(STUDIOS.flatMap((s) => s.classTypes))
 ).sort();
 
-export default function FindAClassPage() {
-  return (
-    <Suspense fallback={null}>
-      <FindAClassContent />
-    </Suspense>
-  );
-}
-
-function FindAClassContent() {
+export default function StudioSearch() {
   const searchParams = useSearchParams();
   const [query, setQuery] = useState(searchParams.get("city") ?? "");
   const [classFilter, setClassFilter] = useState<string | null>(null);
@@ -58,16 +49,23 @@ function FindAClassContent() {
   }, [query, classFilter]);
 
   return (
-    <main>
-      <PageBanner
-        eyebrow="Find A Class"
-        title="Men's reformer classes, worldwide."
-        subtitle="Search by city or country to find studios running men's-friendly reformer Pilates near you."
-      />
-
-      <section className="bg-cream py-14 md:py-20">
+    <>
+      <section id="listings" className="scroll-mt-24 bg-cream py-16 md:py-24">
         <div className="container-x">
-          <Reveal>
+          <Reveal className="mx-auto max-w-2xl text-center">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-red">
+              On Broformer
+            </span>
+            <h2 className="mt-3 font-display text-3xl uppercase leading-[0.95] text-ink sm:text-4xl">
+              {STUDIOS.length} studios and counting.
+            </h2>
+            <p className="mt-4 text-[15px] leading-relaxed text-ink/60">
+              Search by city or country to find studios running men&apos;s-friendly
+              reformer Pilates near you.
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.1} className="mx-auto mt-8 max-w-xl">
             <form
               onSubmit={(e) => {
                 e.preventDefault();
@@ -115,7 +113,7 @@ function FindAClassContent() {
         </div>
       </section>
 
-      <section id="results" className="bg-cream scroll-mt-24 pb-16 md:pb-24">
+      <section id="results" className="scroll-mt-24 bg-cream pb-16 md:pb-24">
         <div className="container-x">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-sm font-semibold uppercase tracking-[0.1em] text-ink/50">
@@ -165,42 +163,42 @@ function FindAClassContent() {
             <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {results.map((studio, i) => (
                 <Reveal key={studio.slug} delay={i * 0.05}>
-                  <article className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-ink/5 transition-shadow duration-300 hover:shadow-lg">
-                    <PhotoBlock
-                      label={studio.name}
-                      glow={i % 2 === 0 ? "top" : "bottom"}
-                      className="aspect-[16/10] transition-transform duration-500 ease-out group-hover:scale-105"
-                    />
-                    <div className="flex flex-1 flex-col p-5">
-                      <h3 className="text-base font-bold text-ink">
-                        {studio.name}
-                      </h3>
-                      <p className="mt-0.5 text-xs font-semibold uppercase tracking-[0.08em] text-red">
-                        {studio.city}, {studio.country}
-                      </p>
-                      <p className="mt-2 text-sm leading-relaxed text-ink/60">
-                        {studio.description}
-                      </p>
-                      <div className="mt-3 flex flex-wrap gap-1.5">
-                        {studio.classTypes.map((t) => (
-                          <span
-                            key={t}
-                            className="rounded-full bg-cream px-2.5 py-1 text-[11px] font-semibold text-ink/60"
-                          >
-                            {t}
-                          </span>
-                        ))}
+                  <Link href={`/studios/${studio.slug}`} className="group block h-full">
+                    <article className="flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-ink/5 transition-shadow duration-300 hover:shadow-lg">
+                      <PhotoBlock
+                        label={studio.name}
+                        glow={i % 2 === 0 ? "top" : "bottom"}
+                        className="aspect-[16/10] transition-transform duration-500 ease-out group-hover:scale-105"
+                      />
+                      <div className="flex flex-1 flex-col p-5">
+                        <h3 className="text-base font-bold text-ink group-hover:text-red">
+                          {studio.name}
+                        </h3>
+                        <p className="mt-0.5 text-xs font-semibold uppercase tracking-[0.08em] text-red">
+                          {studio.city}, {studio.country}
+                        </p>
+                        <p className="mt-2 text-sm leading-relaxed text-ink/60">
+                          {studio.description}
+                        </p>
+                        <div className="mt-3 flex flex-wrap gap-1.5">
+                          {studio.classTypes.map((t) => (
+                            <span
+                              key={t}
+                              className="rounded-full bg-cream px-2.5 py-1 text-[11px] font-semibold text-ink/60"
+                            >
+                              {t}
+                            </span>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                  </article>
+                    </article>
+                  </Link>
                 </Reveal>
               ))}
             </div>
           )}
         </div>
       </section>
-
-      <GearCta />
-    </main>
+    </>
   );
 }

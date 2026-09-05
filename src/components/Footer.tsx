@@ -8,7 +8,7 @@ const COLUMNS = [
   {
     title: "Explore",
     links: [
-      { label: "Find A Class", href: "/find-a-class" },
+      { label: "Find A Class", href: "/studios#listings" },
       { label: "Why Broformer", href: "/#why-broformer" },
       { label: "The Movement", href: "/#the-movement" },
       { label: "Journal", href: "/journal" },

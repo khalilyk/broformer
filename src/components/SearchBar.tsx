@@ -26,7 +26,7 @@ export default function SearchBar({ className = "" }: { className?: string }) {
       onSubmit={(e) => {
         e.preventDefault();
         router.push(
-          query ? `/find-a-class?city=${encodeURIComponent(query)}` : "/find-a-class"
+          query ? `/studios?city=${encodeURIComponent(query)}#results` : "/studios#listings"
         );
       }}
       className={`flex max-w-xl gap-2 ${className}`}

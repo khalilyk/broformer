@@ -1,10 +1,24 @@
 "use client";
 
-import { BadgeCheck, CalendarCheck, CheckCircle2, ListChecks, PenTool } from "lucide-react";
+import { BadgeCheck, CalendarCheck, CheckCircle2, ListChecks, MapPin, PenTool, Search } from "lucide-react";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PageBanner from "@/components/PageBanner";
 import Reveal from "@/components/Reveal";
+
+type PlaceResult = {
+  place_id: number;
+  display_name: string;
+  lat: string;
+  lon: string;
+  address?: {
+    city?: string;
+    town?: string;
+    village?: string;
+    municipality?: string;
+    country?: string;
+  };
+};
 
 const BENEFITS = [
   {
@@ -32,6 +46,51 @@ const BENEFITS = [
 export default function ListYourStudioPage() {
   const [submitted, setSubmitted] = useState(false);
 
+  const [placeQuery, setPlaceQuery] = useState("");
+  const [placeResults, setPlaceResults] = useState<PlaceResult[]>([]);
+  const [placeLoading, setPlaceLoading] = useState(false);
+  const [city, setCity] = useState("");
+  const [country, setCountry] = useState("");
+  const [mapsLink, setMapsLink] = useState("");
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    if (placeQuery.trim().length < 3) {
+      const clear = setTimeout(() => setPlaceResults([]), 0);
+      return () => clearTimeout(clear);
+    }
+
+    const timeout = setTimeout(async () => {
+      setPlaceLoading(true);
+      try {
+        const res = await fetch(
+          `https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&limit=5&q=${encodeURIComponent(placeQuery)}`,
+          { signal: controller.signal }
+        );
+        const data: PlaceResult[] = await res.json();
+        setPlaceResults(data);
+      } catch {
+        setPlaceResults([]);
+      } finally {
+        setPlaceLoading(false);
+      }
+    }, 500);
+    return () => {
+      clearTimeout(timeout);
+      controller.abort();
+    };
+  }, [placeQuery]);
+
+  function selectPlace(result: PlaceResult) {
+    const addr = result.address ?? {};
+    setCity(addr.city ?? addr.town ?? addr.village ?? addr.municipality ?? "");
+    setCountry(addr.country ?? "");
+    setMapsLink(`https://www.google.com/maps/search/?api=1&query=${result.lat},${result.lon}`);
+    setPlaceQuery(result.display_name);
+    setPlaceResults([]);
+  }
+
   return (
     <main>
       <PageBanner
@@ -41,8 +100,8 @@ export default function ListYourStudioPage() {
       />
 
       <section className="bg-cream py-16 md:py-24">
-        <div className="container-x grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
-          <Reveal>
+        <div className="container-x grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.2fr] lg:items-start lg:gap-16">
+          <Reveal className="lg:sticky lg:top-28">
             <h2 className="font-display text-3xl uppercase leading-[0.95] text-ink sm:text-4xl">
               Why studios list on Broformer
             </h2>
@@ -104,14 +163,69 @@ export default function ListYourStudioPage() {
                     <Field label="Contact name" placeholder="Your name" />
                   </div>
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                    <Field label="City" placeholder="e.g. Sydney" />
-                    <Field label="Country" placeholder="e.g. Australia" />
+                    <Field label="Contact number" type="tel" placeholder="e.g. +61 400 000 000" />
+                    <Field label="Email" type="email" placeholder="you@studio.com" />
+                  </div>
+
+                  <label className="relative block">
+                    <span className="mb-1.5 block text-xs font-semibold uppercase tracking-[0.08em] text-ink/50">
+                      Search for your studio
+                    </span>
+                    <div className="flex items-center gap-3 rounded-xl border border-ink/15 bg-cream px-4 py-3">
+                      <Search size={16} className="shrink-0 text-ink/40" />
+                      <input
+                        type="text"
+                        value={placeQuery}
+                        onChange={(e) => setPlaceQuery(e.target.value)}
+                        placeholder="Start typing your studio's name or address"
+                        className="w-full bg-transparent text-sm text-ink placeholder:text-ink/40 focus:outline-none"
+                      />
+                    </div>
+                    {(placeLoading || placeResults.length > 0) && (
+                      <div className="absolute z-10 mt-1.5 w-full overflow-hidden rounded-xl border border-ink/10 bg-white shadow-lg">
+                        {placeLoading ? (
+                          <p className="px-4 py-3 text-sm text-ink/50">Searching...</p>
+                        ) : (
+                          placeResults.map((result) => (
+                            <button
+                              key={result.place_id}
+                              type="button"
+                              onClick={() => selectPlace(result)}
+                              className="flex w-full cursor-pointer items-start gap-2 px-4 py-3 text-left text-sm text-ink/80 transition-colors hover:bg-cream"
+                            >
+                              <MapPin size={15} className="mt-0.5 shrink-0 text-red" />
+                              {result.display_name}
+                            </button>
+                          ))
+                        )}
+                      </div>
+                    )}
+                    <span className="mt-1.5 block text-[11px] text-ink/40">
+                      Search powered by OpenStreetMap. Fills in city, country
+                      and your maps link below, or enter them manually.
+                    </span>
+                  </label>
+
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <Field
+                      label="City"
+                      placeholder="e.g. Sydney"
+                      value={city}
+                      onChange={setCity}
+                    />
+                    <Field
+                      label="Country"
+                      placeholder="e.g. Australia"
+                      value={country}
+                      onChange={setCountry}
+                    />
                   </div>
                   <Field
                     label="Google Maps link"
                     placeholder="Paste your studio's Google Maps link"
+                    value={mapsLink}
+                    onChange={setMapsLink}
                   />
-                  <Field label="Email" type="email" placeholder="you@studio.com" />
                   <Field label="Website (optional)" placeholder="https://" required={false} />
                   <label className="block">
                     <span className="mb-1.5 block text-xs font-semibold uppercase tracking-[0.08em] text-ink/50">
@@ -145,11 +259,15 @@ function Field({
   type = "text",
   placeholder,
   required = true,
+  value,
+  onChange,
 }: {
   label: string;
   type?: string;
   placeholder?: string;
   required?: boolean;
+  value?: string;
+  onChange?: (value: string) => void;
 }) {
   return (
     <label className="block">
@@ -160,6 +278,8 @@ function Field({
         required={required}
         type={type}
         placeholder={placeholder}
+        value={value}
+        onChange={onChange ? (e) => onChange(e.target.value) : undefined}
         className="w-full rounded-xl border border-ink/15 bg-cream px-4 py-3 text-sm text-ink placeholder:text-ink/40 focus:outline-none focus:ring-2 focus:ring-red/30"
       />
     </label>
