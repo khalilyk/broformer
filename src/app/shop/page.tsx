@@ -16,7 +16,7 @@ export default function ShopPage() {
       <PageBanner
         eyebrow="Gear"
         title="Broformer gear."
-        subtitle="Studio-tested apparel and accessories, built for reformer sessions. Online ordering launches soon — join the list to be first."
+        subtitle="Studio-tested apparel and accessories, built for reformer sessions. Online ordering launches soon. Join the list to be first."
       />
 
       <section className="bg-cream py-16 md:py-24">

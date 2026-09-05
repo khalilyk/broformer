@@ -22,7 +22,7 @@ export async function generateMetadata({
   const benefit = getBenefit(slug);
   if (!benefit) return {};
   return {
-    title: `${benefit.title} — Why Men Do Broformer`,
+    title: `${benefit.title}: Why Men Do Broformer`,
     description: benefit.seoDescription,
   };
 }

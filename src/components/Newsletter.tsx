@@ -63,7 +63,7 @@ export default function Newsletter() {
                 Stay In The Loop
               </h3>
               <p className="mt-3 max-w-md text-sm text-white/70 md:text-base">
-                Tips, stories and the latest from the Broformer movement —
+                Tips, stories and the latest from the Broformer movement,
                 straight to your inbox.
               </p>
 

@@ -8,7 +8,7 @@ import Reveal from "@/components/Reveal";
 import { ARTICLES } from "@/lib/journal";
 
 export const metadata: Metadata = {
-  title: "Journal — Broformer",
+  title: "Journal: Broformer",
   description:
     "Guides and studio tips on men's reformer Pilates from the Broformer journal.",
 };
@@ -19,7 +19,7 @@ export default function JournalPage() {
       <PageBanner
         eyebrow="Journal"
         title="Guides, tips & stories."
-        subtitle="Everything we've learned about men's reformer Pilates — for the men doing it, and the studios building classes around it."
+        subtitle="Everything we've learned about men's reformer Pilates, for the men doing it, and the studios building classes around it."
       />
 
       <section className="bg-cream py-16 md:py-24">

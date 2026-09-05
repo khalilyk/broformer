@@ -19,7 +19,7 @@ export async function generateMetadata({
   const article = getArticle(slug);
   if (!article) return {};
   return {
-    title: `${article.title} — Broformer Journal`,
+    title: `${article.title}: Broformer Journal`,
     description: article.excerpt,
   };
 }

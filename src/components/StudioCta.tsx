@@ -43,7 +43,7 @@ export default function StudioCta() {
             <span className="text-red">Let&apos;s get them moving.</span>
           </h2>
           <p className="mt-4 text-[15px] leading-relaxed text-white/60">
-            List your studio on Broformer — free listing, always — and
+            List your studio on Broformer, free listing, always, and
             connect with thousands of men looking for reformer classes.
           </p>
         </Reveal>
@@ -80,10 +80,10 @@ export default function StudioCta() {
             href="/list-your-studio"
             className="block w-full rounded-full bg-red px-6 py-4 text-center text-xs font-semibold uppercase tracking-[0.1em] text-white transition-all duration-300 hover:bg-white hover:text-ink active:scale-95"
           >
-            List Your Studio — Free Listing
+            List Your Studio, Free Listing
           </Link>
           <p className="mt-3 text-center text-xs text-white/40">
-            No cost, ever. Wherever you are — we welcome studios anywhere in
+            No cost, ever. Wherever you are, we welcome studios anywhere in
             the world.
           </p>
         </Reveal>

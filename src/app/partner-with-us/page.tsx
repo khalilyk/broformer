@@ -5,6 +5,16 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import PageBanner from "@/components/PageBanner";
 import Reveal from "@/components/Reveal";
+import { useTypewriter } from "@/hooks/useTypewriter";
+
+const LOCATION_PROMPTS = [
+  "Sydney, Australia",
+  "London, UK",
+  "Dubai, UAE",
+  "New York, USA",
+  "Toronto, Canada",
+  "Singapore",
+];
 
 const PARTNER_TYPES = [
   {
@@ -31,6 +41,7 @@ const PARTNER_TYPES = [
 
 export default function PartnerWithUsPage() {
   const [submitted, setSubmitted] = useState(false);
+  const locationPlaceholder = useTypewriter(LOCATION_PROMPTS);
 
   return (
     <main>
@@ -94,13 +105,19 @@ export default function PartnerWithUsPage() {
                 <h3 className="font-display text-xl uppercase text-ink">
                   Tell us about your organisation
                 </h3>
+                <p className="text-sm leading-relaxed text-ink/50">
+                  Tell us a bit about what you&apos;re building and how it
+                  connects to men&apos;s reformer Pilates. Our partnerships
+                  team reviews every submission personally and reaches out
+                  when there&apos;s a genuine fit.
+                </p>
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <Field label="Full name" type="text" />
                   <Field label="Organisation" type="text" />
                   <Field label="Email" type="email" />
                   <Field label="Contact number" type="tel" />
                 </div>
-                <Field label="Location" type="text" placeholder="City, country" />
+                <Field label="Location" type="text" placeholder={locationPlaceholder} />
                 <label className="block">
                   <span className="mb-1.5 block text-xs font-semibold uppercase tracking-[0.08em] text-ink/50">
                     What did you have in mind?

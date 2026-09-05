@@ -11,11 +11,11 @@ const FAQS = [
     items: [
       {
         q: "Is reformer Pilates actually good for men?",
-        a: "Yes — reformer training builds functional strength, core control and mobility that carries directly into lifting, running and most sports. It's especially effective for correcting the imbalances heavy training can create.",
+        a: "Yes. Reformer training builds functional strength, core control and mobility that carries directly into lifting, running and most sports. It's especially effective for correcting the imbalances heavy training can create.",
       },
       {
         q: "I've never done Pilates. What should I expect from my first class?",
-        a: "Most beginner-friendly studios on Broformer run an intro or foundations class that walks you through the machine and basic movements. You don't need any prior experience — instructors expect first-timers.",
+        a: "Most beginner-friendly studios on Broformer run an intro or foundations class that walks you through the machine and basic movements. You don't need any prior experience: instructors expect first-timers.",
       },
       {
         q: "Is Broformer only for men's-only classes?",
@@ -23,7 +23,7 @@ const FAQS = [
       },
       {
         q: "Is it free to use Broformer to find a class?",
-        a: "Completely free. Class pricing is set by each individual studio — Broformer doesn't take a booking fee.",
+        a: "Completely free. Class pricing is set by each individual studio, and Broformer doesn't take a booking fee.",
       },
     ],
   },
@@ -40,7 +40,7 @@ const FAQS = [
       },
       {
         q: "Can I update my listing after it's live?",
-        a: "Yes — email us at hello@broformer.com with any changes and we'll update it, usually within one business day.",
+        a: "Yes, email us at hello@broformer.com with any changes and we'll update it, usually within one business day.",
       },
       {
         q: "Do I need to run a men's-only class to be listed?",

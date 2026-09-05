@@ -12,7 +12,7 @@ const CHANNELS = [
     icon: Mail,
     title: "Email us",
     detail: "hello@broformer.com",
-    note: "For anything — questions, feedback, press or partnership enquiries all land in the same inbox.",
+    note: "For anything: questions, feedback, press or partnership enquiries all land in the same inbox.",
   },
   {
     icon: MessageCircle,
@@ -59,7 +59,7 @@ export default function ContactPage() {
       <PageBanner
         eyebrow="Support"
         title="Get in touch."
-        subtitle="Questions about finding a class, listing a studio, or anything else — we'd love to hear from you."
+        subtitle="Questions about finding a class, listing a studio, or anything else, we'd love to hear from you."
       />
 
       <section className="bg-cream py-16 md:py-24">
@@ -123,7 +123,7 @@ export default function ContactPage() {
                     Message sent
                   </h3>
                   <p className="mt-2 text-sm text-ink/60">
-                    Thanks for reaching out — we&apos;ll reply within 2
+                    Thanks for reaching out. We&apos;ll reply within 2
                     business days.
                   </p>
                 </div>
@@ -139,8 +139,8 @@ export default function ContactPage() {
                     Fill this out and it goes straight to{" "}
                     <span className="font-bold text-ink">
                       hello@broformer.com
-                    </span>{" "}
-                    — no ticket numbers, just a reply from our team.
+                    </span>
+                    , no ticket numbers, just a reply from our team.
                   </p>
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <label className="block">
@@ -206,7 +206,7 @@ export default function ContactPage() {
                     Send Message
                   </button>
                   <p className="text-center text-[12px] text-ink/40">
-                    We read every message ourselves — no auto-responders.
+                    We read every message ourselves. No auto-responders.
                   </p>
                 </form>
               )}

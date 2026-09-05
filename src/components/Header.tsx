@@ -5,12 +5,12 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useTypewriter } from "@/hooks/useTypewriter";
-import GlowLink from "./GlowLink";
+import GlowGroup from "./GlowGroup";
 import Logo from "./Logo";
 
 const NAV_LINKS = [
-  { label: "Why Broformer", href: "/#why-broformer" },
   { label: "The Movement", href: "/#the-movement" },
+  { label: "Why Broformer", href: "/#why-broformer" },
   { label: "For Studios", href: "/#for-studios" },
   { label: "Journal", href: "/journal" },
 ];
@@ -60,17 +60,17 @@ export default function Header() {
           <Logo className="text-2xl md:text-3xl" />
         </Link>
 
-        <nav className="hidden items-center gap-8 lg:flex">
+        <GlowGroup className="hidden items-center gap-8 lg:flex">
           {NAV_LINKS.map((link) => (
-            <GlowLink
+            <Link
               key={link.label}
               href={link.href}
               className="text-xs font-semibold uppercase tracking-[0.12em] text-white/90 transition-colors hover:text-white"
             >
               {link.label}
-            </GlowLink>
+            </Link>
           ))}
-        </nav>
+        </GlowGroup>
 
         <button
           aria-label="Toggle menu"

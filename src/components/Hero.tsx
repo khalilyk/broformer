@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import GlowLink from "./GlowLink";
+import GlowGroup from "./GlowGroup";
 import SearchBar from "./SearchBar";
 
 const POPULAR_CITIES = [
@@ -50,8 +50,8 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             className="mt-6 max-w-sm text-sm text-white/85 md:text-base"
           >
-            Reformer Pilates builds strength, mobility and core control —
-            learn why men are doing it, and find a class near you.
+            Reformer Pilates builds strength, mobility and core control.
+            Learn why men are doing it, and find a class near you.
           </motion.p>
 
           <motion.div
@@ -72,15 +72,17 @@ export default function Hero() {
             <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/50">
               Popular Cities
             </span>
-            {POPULAR_CITIES.map((city) => (
-              <GlowLink
-                key={city}
-                href={`/find-a-class?city=${encodeURIComponent(city)}`}
-                className="text-sm text-white/85 transition-colors hover:text-white"
-              >
-                {city}
-              </GlowLink>
-            ))}
+            <GlowGroup className="inline-flex flex-wrap items-center gap-x-4 gap-y-2">
+              {POPULAR_CITIES.map((city) => (
+                <Link
+                  key={city}
+                  href={`/find-a-class?city=${encodeURIComponent(city)}`}
+                  className="text-sm text-white/85 transition-colors hover:text-white"
+                >
+                  {city}
+                </Link>
+              ))}
+            </GlowGroup>
             <Link
               href="/find-a-class"
               className="group inline-flex items-center gap-1 text-sm font-semibold text-red transition-colors hover:text-white"

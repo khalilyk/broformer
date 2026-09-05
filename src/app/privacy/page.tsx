@@ -3,13 +3,13 @@ import PageBanner from "@/components/PageBanner";
 import Reveal from "@/components/Reveal";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Broformer",
+  title: "Privacy Policy: Broformer",
 };
 
 const SECTIONS = [
   {
     title: "1. What we collect",
-    body: "When you use Broformer, we collect information you give us directly — such as your name and email when you sign up for updates, search for a class, or submit a studio listing. We also collect basic usage data (pages visited, general location, device type) to help us understand how the directory is used.",
+    body: "When you use Broformer, we collect information you give us directly, such as your name and email when you sign up for updates, search for a class, or submit a studio listing. We also collect basic usage data (pages visited, general location, device type) to help us understand how the directory is used.",
   },
   {
     title: "2. How we use it",

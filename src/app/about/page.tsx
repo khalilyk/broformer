@@ -5,7 +5,7 @@ import PhotoBlock from "@/components/PhotoBlock";
 import Reveal from "@/components/Reveal";
 
 export const metadata: Metadata = {
-  title: "About — Broformer",
+  title: "About: Broformer",
   description:
     "Broformer is the global directory and movement connecting men with reformer Pilates studios worldwide.",
 };
@@ -15,7 +15,7 @@ const VALUES = [
     icon: Target,
     title: "Results, not trends",
     description:
-      "We talk about reformer Pilates the way men actually think about training — strength, mobility, performance, recovery.",
+      "We talk about reformer Pilates the way men actually think about training: strength, mobility, performance, recovery.",
   },
   {
     icon: Globe2,
@@ -37,7 +37,7 @@ export default function AboutPage() {
       <PageBanner
         eyebrow="About Broformer"
         title="The global home of men's reformer Pilates."
-        subtitle="We started Broformer because too many men were missing out on one of the most effective forms of training there is — simply because nobody had made the case for it."
+        subtitle="We started Broformer because too many men were missing out on one of the most effective forms of training there is, simply because nobody had made the case for it."
       />
 
       <section className="bg-cream py-16 md:py-24">
@@ -57,7 +57,7 @@ export default function AboutPage() {
             <div className="mt-5 space-y-4 text-[15px] leading-relaxed text-ink/70">
               <p>
                 Reformer Pilates builds strength, mobility and core control
-                better than almost anything else — but the way it&apos;s
+                better than almost anything else, but the way it&apos;s
                 marketed rarely speaks to men. Broformer exists to close
                 that gap.
               </p>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import GlowLink from "./GlowLink";
+import GlowGroup from "./GlowGroup";
 import GoalCounter from "./GoalCounter";
 import Logo from "./Logo";
 import { FacebookIcon, InstagramIcon, YoutubeIcon } from "./SocialIcons";
@@ -82,7 +82,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="container-x mx-auto grid max-w-3xl grid-cols-1 gap-10 py-12 text-center sm:grid-cols-3">
+      <GlowGroup className="container-x mx-auto grid max-w-3xl grid-cols-1 gap-10 py-12 text-center sm:grid-cols-3">
         {COLUMNS.map((col) => (
           <div key={col.title}>
             <h4 className="text-xs font-semibold uppercase tracking-[0.16em] text-white/50">
@@ -91,18 +91,18 @@ export default function Footer() {
             <ul className="mt-5 space-y-3">
               {col.links.map((link) => (
                 <li key={link.label}>
-                  <GlowLink
+                  <Link
                     href={link.href}
                     className="text-sm text-white/80 transition-colors hover:text-white"
                   >
                     {link.label}
-                  </GlowLink>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
         ))}
-      </div>
+      </GlowGroup>
 
       <div className="border-t border-white/10 py-6">
         <div className="container-x flex flex-col-reverse items-center justify-between gap-3 text-xs text-white/40 sm:flex-row">

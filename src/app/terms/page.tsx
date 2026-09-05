@@ -3,7 +3,7 @@ import PageBanner from "@/components/PageBanner";
 import Reveal from "@/components/Reveal";
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions — Broformer",
+  title: "Terms & Conditions: Broformer",
 };
 
 const SECTIONS = [
@@ -21,7 +21,7 @@ const SECTIONS = [
   },
   {
     title: "4. Acceptable use",
-    body: "You agree not to misuse the site — including submitting false studio listings, scraping the directory, or using the platform for anything unlawful.",
+    body: "You agree not to misuse the site, including submitting false studio listings, scraping the directory, or using the platform for anything unlawful.",
   },
   {
     title: "5. Intellectual property",

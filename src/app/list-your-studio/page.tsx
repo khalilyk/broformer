@@ -10,7 +10,7 @@ const BENEFITS = [
   {
     icon: ListChecks,
     title: "Free Listing",
-    description: "Get discovered in the Broformer studio directory — no cost, ever.",
+    description: "Get discovered in the Broformer studio directory, no cost, ever.",
   },
   {
     icon: CalendarCheck,
@@ -73,7 +73,7 @@ export default function ListYourStudioPage() {
             </div>
             <p className="mt-8 text-sm leading-relaxed text-ink/50">
               Listings are reviewed within 2 business days. There&apos;s no
-              cost to list — we make money when we help you fill more
+              cost to list. We make money when we help you fill more
               classes, not before.
             </p>
           </Reveal>
