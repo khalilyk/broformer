@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import GearCta from "@/components/GearCta";
 import PageBanner from "@/components/PageBanner";
 import PhotoBlock from "@/components/PhotoBlock";
 import Reveal from "@/components/Reveal";
@@ -58,6 +59,8 @@ export default function JournalPage() {
           </div>
         </div>
       </section>
+
+      <GearCta />
     </main>
   );
 }
