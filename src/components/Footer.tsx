@@ -11,7 +11,6 @@ const COLUMNS = [
       { label: "Why Broformer", href: "/#why-broformer" },
       { label: "The Movement", href: "/#the-movement" },
       { label: "Journal", href: "/journal" },
-      { label: "About", href: "/about" },
     ],
   },
   {
