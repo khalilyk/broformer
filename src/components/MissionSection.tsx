@@ -16,12 +16,12 @@ export default function MissionSection() {
             <p>
               Broformer started with a simple observation: reformer Pilates
               does more for strength, mobility and mental discipline than
-              almost anything else — but hardly any man tries it, because
+              almost anything else, but hardly any man tries it, because
               nothing about how it&apos;s marketed speaks to him.
             </p>
             <p>
               We didn&apos;t build this to sell a workout. We built it to
-              give men an easy way in — a class that holds you accountable,
+              give men an easy way in: a class that holds you accountable,
               a community that keeps you consistent, and a reason to
               actually show up for yourself every week.
             </p>
@@ -31,12 +31,12 @@ export default function MissionSection() {
               tired of training programs with no accountability built in.
               So we built the thing we wished existed: a directory that
               points men to studios that actually welcome them, and a
-              set of standards — a men&apos;s class, a straightforward
-              way in, real coaching — that studios could build around.
+              set of standards (a men&apos;s class, a straightforward
+              way in, real coaching) that studios could build around.
             </p>
             <p>
               Because the hardest part of getting stronger was never the
-              exercise. It was starting — and then not quitting on
+              exercise. It was starting, and then not quitting on
               yourself. That&apos;s the whole mission: fewer excuses,
               more men moving, and a global standard for what a
               men&apos;s reformer class should feel like.

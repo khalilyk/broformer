@@ -3,7 +3,7 @@ import type { CSSProperties } from "react";
 
 /**
  * Stylised placeholder for brand photography. Swap for real images
- * (e.g. via next/image pointed at /public/images/*) when available —
+ * (e.g. via next/image pointed at /public/images/*) when available,
  * the aspect ratio + rounded treatment is what the layout depends on.
  */
 export default function PhotoBlock({
