@@ -14,7 +14,11 @@ export default function AccordionItem({
 }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className={`border-b py-4 ${dark ? "border-white/10" : "border-ink/10"}`}>
+    <div
+      className={`rounded-2xl px-5 py-4 shadow-sm transition-colors duration-300 ${
+        dark ? "bg-white/5 ring-1 ring-white/10" : "bg-cream ring-1 ring-ink/5"
+      }`}
+    >
       <button
         onClick={() => setOpen((o) => !o)}
         className="flex w-full cursor-pointer items-start justify-between gap-4 text-left"

@@ -59,6 +59,19 @@ section[id] {
   }
 }
 
+@keyframes globe-spin {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+.globe-spin {
+  animation: globe-spin 16s linear infinite;
+}
+
 @keyframes marquee {
   from {
     transform: translateX(0);

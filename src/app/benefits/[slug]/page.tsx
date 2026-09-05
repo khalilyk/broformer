@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, HelpCircle, Search } from "lucide-react";
 import AccordionItem from "@/components/AccordionItem";
 import GearCta from "@/components/GearCta";
+import GlobeAnimation from "@/components/GlobeAnimation";
 import PhotoBlock from "@/components/PhotoBlock";
 import Reveal from "@/components/Reveal";
 import SearchBar from "@/components/SearchBar";
@@ -108,7 +109,8 @@ export default async function BenefitPage({
               ))}
             </div>
 
-            <div className="mt-10 rounded-2xl bg-ink px-6 py-10 text-center shadow-sm sm:px-10 sm:py-12">
+            <div className="relative isolate mt-10 overflow-hidden rounded-2xl bg-ink px-6 py-10 text-center shadow-sm sm:px-10 sm:py-12">
+              <GlobeAnimation className="left-1/2 top-1/2 -z-10 h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2 opacity-70 sm:h-[340px] sm:w-[340px]" />
               <span className="mx-auto grid h-14 w-14 place-items-center rounded-full border border-red/40 text-red">
                 <Search size={22} strokeWidth={1.75} />
               </span>
@@ -145,13 +147,13 @@ export default async function BenefitPage({
             </p>
           </Reveal>
 
-          <Reveal delay={0.1} className="mx-auto mt-12 grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2">
-            <div className="rounded-2xl bg-cream px-6 sm:px-8">
+          <Reveal delay={0.1} className="mx-auto mt-12 grid max-w-5xl grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-x-6">
+            <div className="flex flex-col gap-3">
               {faqColOne.map((faq, i) => (
                 <AccordionItem key={i} q={faq.q} a={faq.a} />
               ))}
             </div>
-            <div className="rounded-2xl bg-cream px-6 sm:px-8">
+            <div className="flex flex-col gap-3">
               {faqColTwo.map((faq, i) => (
                 <AccordionItem key={i} q={faq.q} a={faq.a} />
               ))}
@@ -160,7 +162,7 @@ export default async function BenefitPage({
         </div>
       </section>
 
-      <section className="bg-paper py-16 md:py-24">
+      <section className="bg-cream py-16 md:py-24">
         <div className="container-x text-center">
           <h2 className="font-display text-2xl uppercase text-ink sm:text-3xl">
             More reasons men do Broformer
@@ -173,8 +175,8 @@ export default async function BenefitPage({
                 className="h-full w-[calc(50%-0.625rem)] sm:w-[calc(25%-0.9375rem)]"
               >
                 <Link href={`/benefits/${b.slug}`} className="group block h-full">
-                  <div className="flex h-full min-h-[228px] cursor-pointer flex-col items-center rounded-2xl bg-cream p-5 text-center shadow-sm ring-1 ring-ink/10 transition-colors duration-300 hover:bg-ink">
-                    <span className="grid h-14 w-14 shrink-0 place-items-center rounded-full border border-red/30 bg-paper text-red transition-colors duration-300 group-hover:border-red group-hover:bg-red group-hover:text-white">
+                  <div className="flex h-full min-h-[228px] cursor-pointer flex-col items-center rounded-2xl bg-paper p-5 text-center shadow-sm ring-1 ring-ink/10 transition-colors duration-300 hover:bg-ink">
+                    <span className="grid h-14 w-14 shrink-0 place-items-center rounded-full border border-red/30 bg-cream text-red transition-colors duration-300 group-hover:border-red group-hover:bg-red group-hover:text-white">
                       <b.icon
                         size={24}
                         strokeWidth={1.5}
