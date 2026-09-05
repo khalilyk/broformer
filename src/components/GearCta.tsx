@@ -39,9 +39,9 @@ export default function GearCta() {
                   <Link
                     key={product.slug}
                     href="/shop"
-                    className="group/product text-left"
+                    className="group/product text-center"
                   >
-                    <div className="overflow-hidden rounded-xl ring-1 ring-white/15">
+                    <div className="overflow-hidden rounded-xl ring-1 ring-white/15 transition-shadow duration-300 group-hover/product:shadow-[0_0_28px_4px_rgba(255,255,255,0.3)]">
                       <PhotoBlock
                         label={product.name}
                         glow="center"
