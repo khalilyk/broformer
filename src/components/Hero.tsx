@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import GlowLink from "./GlowLink";
@@ -92,6 +93,23 @@ export default function Hero() {
           </motion.div>
         </div>
       </header>
+
+      <motion.button
+        type="button"
+        aria-label="Scroll down"
+        onClick={() =>
+          document.getElementById("the-movement")?.scrollIntoView({ behavior: "smooth" })
+        }
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, y: [0, 8, 0] }}
+        transition={{
+          opacity: { duration: 0.7, delay: 0.7 },
+          y: { duration: 1.6, repeat: Infinity, ease: "easeInOut", delay: 1 },
+        }}
+        className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 cursor-pointer text-white/70 transition-colors hover:text-white"
+      >
+        <ChevronDown size={28} strokeWidth={1.5} />
+      </motion.button>
     </section>
   );
 }
