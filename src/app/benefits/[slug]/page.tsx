@@ -127,25 +127,25 @@ export default async function BenefitPage({
       </section>
 
       <section className="bg-charcoal py-16 md:py-24">
-        <div className="container-x grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
-          <Reveal>
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-red">
+        <div className="container-x">
+          <Reveal className="mx-auto max-w-2xl text-center">
+            <span className="grid h-14 w-14 mx-auto place-items-center rounded-full border border-red/40 text-red">
+              <HelpCircle size={22} strokeWidth={1.75} />
+            </span>
+            <span className="mt-5 block text-xs font-semibold uppercase tracking-[0.2em] text-red">
               FAQ
             </span>
             <h2 className="mt-3 font-display text-3xl uppercase leading-[0.95] text-white sm:text-4xl">
               Questions men ask about {benefit.title.toLowerCase()}.
             </h2>
-            <p className="mt-4 max-w-md text-[15px] leading-relaxed text-white/60">
+            <p className="mt-4 text-[15px] leading-relaxed text-white/60">
               Straight answers to the most common questions about how
               reformer Pilates builds {benefit.title.toLowerCase()}, so you
               know exactly what to expect before your first class.
             </p>
-            <span className="mt-8 hidden h-14 w-14 place-items-center rounded-full border border-red/40 text-red lg:grid">
-              <HelpCircle size={22} strokeWidth={1.75} />
-            </span>
           </Reveal>
 
-          <Reveal delay={0.1} className="grid grid-cols-1 gap-x-10 sm:grid-cols-2">
+          <Reveal delay={0.1} className="mx-auto mt-12 grid max-w-5xl grid-cols-1 gap-x-10 sm:grid-cols-2">
             <div>
               {faqColOne.map((faq, i) => (
                 <AccordionItem key={i} q={faq.q} a={faq.a} dark />
