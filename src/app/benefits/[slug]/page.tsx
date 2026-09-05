@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, Search } from "lucide-react";
+import { ArrowLeft, ArrowRight, HelpCircle, Search } from "lucide-react";
+import AccordionItem from "@/components/AccordionItem";
 import GearCta from "@/components/GearCta";
 import PhotoBlock from "@/components/PhotoBlock";
 import Reveal from "@/components/Reveal";
 import SearchBar from "@/components/SearchBar";
 import { BENEFITS, getBenefit } from "@/lib/benefits";
+import { getBenefitFaqs } from "@/lib/benefitFaqs";
 
 export function generateStaticParams() {
   return BENEFITS.map((b) => ({ slug: b.slug }));
@@ -37,6 +39,10 @@ export default async function BenefitPage({
   if (!benefit) notFound();
 
   const others = BENEFITS.filter((b) => b.slug !== slug);
+  const faqs = getBenefitFaqs(slug);
+  const faqMid = Math.ceil(faqs.length / 2);
+  const faqColOne = faqs.slice(0, faqMid);
+  const faqColTwo = faqs.slice(faqMid);
 
   return (
     <main>
@@ -115,6 +121,40 @@ export default async function BenefitPage({
               <div className="mt-6 flex justify-center">
                 <SearchBar />
               </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="bg-charcoal py-16 md:py-24">
+        <div className="container-x grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
+          <Reveal>
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-red">
+              FAQ
+            </span>
+            <h2 className="mt-3 font-display text-3xl uppercase leading-[0.95] text-white sm:text-4xl">
+              Questions men ask about {benefit.title.toLowerCase()}.
+            </h2>
+            <p className="mt-4 max-w-md text-[15px] leading-relaxed text-white/60">
+              Straight answers to the most common questions about how
+              reformer Pilates builds {benefit.title.toLowerCase()}, so you
+              know exactly what to expect before your first class.
+            </p>
+            <span className="mt-8 hidden h-14 w-14 place-items-center rounded-full border border-red/40 text-red lg:grid">
+              <HelpCircle size={22} strokeWidth={1.75} />
+            </span>
+          </Reveal>
+
+          <Reveal delay={0.1} className="grid grid-cols-1 gap-x-10 sm:grid-cols-2">
+            <div>
+              {faqColOne.map((faq, i) => (
+                <AccordionItem key={i} q={faq.q} a={faq.a} dark />
+              ))}
+            </div>
+            <div>
+              {faqColTwo.map((faq, i) => (
+                <AccordionItem key={i} q={faq.q} a={faq.a} dark />
+              ))}
             </div>
           </Reveal>
         </div>

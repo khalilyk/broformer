@@ -31,7 +31,7 @@ const POINTS = [
 
 export default function StudioCta() {
   return (
-    <section id="for-studios" className="bg-ink py-20 md:py-28">
+    <section id="for-studios" className="bg-charcoal py-20 md:py-28">
       <div className="container-x">
         <Reveal className="mx-auto max-w-2xl text-center">
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-red">
