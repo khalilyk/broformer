@@ -90,28 +90,6 @@ export default function Hero() {
               </span>
             </Link>
           </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-6 flex flex-wrap gap-3"
-          >
-            {[
-              { label: "List Your Studio", href: "/list-your-studio" },
-              { label: "Buy Gear", href: "/shop" },
-              { label: "Learn More", href: "/#why-broformer" },
-            ].map((pill) => (
-              <Link
-                key={pill.label}
-                href={pill.href}
-                className="group relative inline-flex overflow-hidden rounded-full border border-white/70 px-6 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-white transition-colors duration-300 hover:border-red"
-              >
-                <span className="absolute inset-0 -translate-x-full bg-red transition-transform duration-300 ease-out group-hover:translate-x-0" />
-                <span className="relative">{pill.label}</span>
-              </Link>
-            ))}
-          </motion.div>
         </div>
       </header>
     </section>

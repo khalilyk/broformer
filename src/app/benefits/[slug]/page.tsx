@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, Search } from "lucide-react";
 import GearCta from "@/components/GearCta";
 import PhotoBlock from "@/components/PhotoBlock";
 import Reveal from "@/components/Reveal";
@@ -102,8 +102,19 @@ export default async function BenefitPage({
               ))}
             </div>
 
-            <div className="mt-10">
-              <SearchBar />
+            <div className="mt-10 rounded-2xl bg-ink px-6 py-10 text-center shadow-sm sm:px-10 sm:py-12">
+              <span className="mx-auto grid h-14 w-14 place-items-center rounded-full border border-red/40 text-red">
+                <Search size={22} strokeWidth={1.75} />
+              </span>
+              <h3 className="mt-5 font-display text-2xl uppercase text-white sm:text-3xl">
+                Ready to feel it for yourself?
+              </h3>
+              <p className="mt-1.5 text-sm text-white/60">
+                Find a men&apos;s-friendly reformer class near you.
+              </p>
+              <div className="mt-6 flex justify-center">
+                <SearchBar />
+              </div>
             </div>
           </Reveal>
         </div>
@@ -127,6 +138,9 @@ export default async function BenefitPage({
                   <h3 className="mt-3 text-sm font-bold uppercase tracking-[0.08em] text-ink">
                     {b.title}
                   </h3>
+                  <p className="mt-1.5 text-xs leading-snug text-ink/55 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    {b.tagline}
+                  </p>
                   <span className="mt-1 inline-flex items-center gap-1 text-xs font-bold text-red opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                     Learn more
                     <ArrowRight size={12} />
