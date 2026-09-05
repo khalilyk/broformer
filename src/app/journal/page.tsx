@@ -42,7 +42,7 @@ export default function JournalPage() {
                     <h2 className="mt-2 text-lg font-bold text-ink">
                       {article.title}
                     </h2>
-                    <p className="mt-2 text-sm leading-relaxed text-ink/60">
+                    <p className="mt-2 text-[13px] leading-relaxed text-ink/60">
                       {article.excerpt}
                     </p>
                     <span className="mt-auto inline-flex w-fit items-center gap-1.5 pt-4 text-xs font-bold uppercase tracking-[0.08em] text-red">

@@ -80,7 +80,7 @@ export default async function ArticlePage({
       {more.length > 0 && (
         <section className="bg-paper py-16 md:py-24">
           <div className="container-x">
-            <h2 className="font-display text-2xl uppercase text-ink sm:text-3xl">
+            <h2 className="font-display text-3xl uppercase leading-[0.95] text-ink sm:text-4xl">
               More from the journal
             </h2>
             <div className="mt-10 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-3">

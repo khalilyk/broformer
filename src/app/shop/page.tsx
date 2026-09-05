@@ -58,13 +58,13 @@ export default function ShopPage() {
         </div>
       </section>
 
-      <section className="bg-ink py-16 md:py-20">
+      <section className="bg-ink py-20 md:py-28">
         <div className="container-x">
           <Reveal className="mx-auto flex max-w-md flex-col items-center text-center">
             <span className="grid h-12 w-12 place-items-center rounded-full border border-white/20 bg-white/10 text-white">
               <Mail size={20} strokeWidth={1.75} />
             </span>
-            <h2 className="mt-4 font-display text-2xl uppercase text-white">
+            <h2 className="mt-4 font-display text-3xl uppercase leading-[0.95] text-white sm:text-4xl">
               Get notified at launch
             </h2>
             <p className="mt-2 text-sm text-white/60">

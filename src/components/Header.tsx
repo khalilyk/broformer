@@ -11,7 +11,7 @@ import Logo from "./Logo";
 const NAV_LINKS = [
   { label: "The Movement", href: "/#the-movement" },
   { label: "Why Broformer", href: "/#why-broformer" },
-  { label: "For Studios", href: "/#for-studios" },
+  { label: "Studios", href: "/studios" },
   { label: "Journal", href: "/journal" },
 ];
 

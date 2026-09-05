@@ -164,7 +164,7 @@ export default async function BenefitPage({
 
       <section className="bg-cream py-16 md:py-24">
         <div className="container-x text-center">
-          <h2 className="font-display text-2xl uppercase text-ink sm:text-3xl">
+          <h2 className="font-display text-3xl uppercase leading-[0.95] text-ink sm:text-4xl">
             More reasons men do Broformer
           </h2>
           <div className="mx-auto mt-10 flex max-w-4xl flex-wrap justify-center gap-5">

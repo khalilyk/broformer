@@ -12,7 +12,7 @@ export default function MissionSection() {
           <h2 className="mt-3 font-display text-3xl uppercase leading-[0.95] text-ink sm:text-4xl">
             Discipline should be simple to start.
           </h2>
-          <div className="mt-5 space-y-4 text-[15px] leading-relaxed text-ink/70">
+          <div className="mt-5 space-y-4 text-[15px] leading-relaxed text-ink/60">
             <p>
               Broformer started with a simple observation: reformer Pilates
               does more for strength, mobility and mental discipline than

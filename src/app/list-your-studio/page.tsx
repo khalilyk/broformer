@@ -43,7 +43,7 @@ export default function ListYourStudioPage() {
       <section className="bg-cream py-16 md:py-24">
         <div className="container-x grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
           <Reveal>
-            <h2 className="font-display text-2xl uppercase text-ink sm:text-3xl">
+            <h2 className="font-display text-3xl uppercase leading-[0.95] text-ink sm:text-4xl">
               Why studios list on Broformer
             </h2>
             <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -61,7 +61,7 @@ export default function ListYourStudioPage() {
                         className="transition-transform duration-300 group-hover:scale-110"
                       />
                     </span>
-                    <h3 className="mt-4 text-sm font-bold uppercase tracking-[0.06em] text-ink transition-colors duration-300 group-hover:text-white">
+                    <h3 className="mt-4 text-sm font-bold uppercase tracking-[0.08em] text-ink transition-colors duration-300 group-hover:text-white">
                       {benefit.title}
                     </h3>
                     <p className="mt-1.5 text-[13px] leading-relaxed text-ink/60 transition-colors duration-300 group-hover:text-white/60">
@@ -107,8 +107,12 @@ export default function ListYourStudioPage() {
                     <Field label="City" placeholder="e.g. Sydney" />
                     <Field label="Country" placeholder="e.g. Australia" />
                   </div>
+                  <Field
+                    label="Google Maps link"
+                    placeholder="Paste your studio's Google Maps link"
+                  />
                   <Field label="Email" type="email" placeholder="you@studio.com" />
-                  <Field label="Website (optional)" placeholder="https://" />
+                  <Field label="Website (optional)" placeholder="https://" required={false} />
                   <label className="block">
                     <span className="mb-1.5 block text-xs font-semibold uppercase tracking-[0.08em] text-ink/50">
                       Tell us about your studio
@@ -140,10 +144,12 @@ function Field({
   label,
   type = "text",
   placeholder,
+  required = true,
 }: {
   label: string;
   type?: string;
   placeholder?: string;
+  required?: boolean;
 }) {
   return (
     <label className="block">
@@ -151,7 +157,7 @@ function Field({
         {label}
       </span>
       <input
-        required
+        required={required}
         type={type}
         placeholder={placeholder}
         className="w-full rounded-xl border border-ink/15 bg-cream px-4 py-3 text-sm text-ink placeholder:text-ink/40 focus:outline-none focus:ring-2 focus:ring-red/30"

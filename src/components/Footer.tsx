@@ -17,8 +17,8 @@ const COLUMNS = [
   {
     title: "For Studios",
     links: [
+      { label: "Studios", href: "/studios" },
       { label: "List Your Studio", href: "/list-your-studio" },
-      { label: "Studio Resources", href: "/studio-resources" },
       { label: "Partner With Us", href: "/partner-with-us" },
       { label: "Log In", href: "/login" },
     ],
@@ -53,7 +53,7 @@ export default function Footer() {
           target={1_000_000}
           className="mt-3 font-display text-6xl tabular-nums text-red sm:text-7xl md:text-8xl"
         />
-        <p className="mt-2 text-sm font-semibold uppercase tracking-[0.1em] text-white/60">
+        <p className="mt-2 text-sm font-semibold uppercase tracking-[0.18em] text-white/60">
           Men Moving Worldwide
         </p>
       </div>

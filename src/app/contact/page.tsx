@@ -78,7 +78,7 @@ export default function ContactPage() {
                     <p className="mt-0.5 text-sm text-ink/70">
                       {channel.detail}
                     </p>
-                    <p className="mt-1 max-w-sm text-[13px] leading-relaxed text-ink/50">
+                    <p className="mt-1 max-w-sm text-[13px] leading-relaxed text-ink/60">
                       {channel.note}
                     </p>
                     {channel.link && (

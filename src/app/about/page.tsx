@@ -54,7 +54,7 @@ export default function AboutPage() {
             <h2 className="mt-3 font-display text-3xl uppercase leading-[0.95] text-ink sm:text-4xl">
               Reformer Pilates, repositioned.
             </h2>
-            <div className="mt-5 space-y-4 text-[15px] leading-relaxed text-ink/70">
+            <div className="mt-5 space-y-4 text-[15px] leading-relaxed text-ink/60">
               <p>
                 Reformer Pilates builds strength, mobility and core control
                 better than almost anything else, but the way it&apos;s

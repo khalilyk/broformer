@@ -65,7 +65,7 @@ function FindAClassContent() {
         subtitle="Search by city or country to find studios running men's-friendly reformer Pilates near you."
       />
 
-      <section className="bg-cream py-10 md:py-14">
+      <section className="bg-cream py-14 md:py-20">
         <div className="container-x">
           <Reveal>
             <form
