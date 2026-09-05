@@ -8,7 +8,13 @@ export function useTypewriter(
     typingSpeed = 80,
     deletingSpeed = 40,
     pause = 1500,
-  }: { typingSpeed?: number; deletingSpeed?: number; pause?: number } = {}
+    cursor = true,
+  }: {
+    typingSpeed?: number;
+    deletingSpeed?: number;
+    pause?: number;
+    cursor?: boolean;
+  } = {}
 ) {
   const [index, setIndex] = useState(0);
   const [subIndex, setSubIndex] = useState(0);
@@ -16,9 +22,10 @@ export function useTypewriter(
   const [blink, setBlink] = useState(true);
 
   useEffect(() => {
+    if (!cursor) return;
     const blinkTimer = setInterval(() => setBlink((b) => !b), 500);
     return () => clearInterval(blinkTimer);
-  }, []);
+  }, [cursor]);
 
   useEffect(() => {
     if (words.length === 0) return;

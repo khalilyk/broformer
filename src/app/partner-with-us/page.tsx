@@ -1,6 +1,7 @@
 "use client";
 
 import { Building2, Handshake, Megaphone, ShoppingBag } from "lucide-react";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import PageBanner from "@/components/PageBanner";
 import Reveal from "@/components/Reveal";
@@ -36,7 +37,7 @@ export default function PartnerWithUsPage() {
       <PageBanner
         eyebrow="Partnerships"
         title="Partner with Broformer."
-        subtitle="We work with studios, brands and organisations that want to help more men move — with a growing, engaged global audience behind every partnership."
+        subtitle="We work with studios, brands and organisations that want to help more men move, with a growing, engaged global audience behind every partnership."
       />
 
       <section className="bg-cream py-16 md:py-24">
@@ -44,17 +45,25 @@ export default function PartnerWithUsPage() {
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {PARTNER_TYPES.map((type, i) => (
               <Reveal key={type.title} delay={i * 0.06}>
-                <div className="flex flex-col items-center text-center">
-                  <span className="grid h-16 w-16 place-items-center rounded-full border border-red/30 text-red">
-                    <type.icon size={26} strokeWidth={1.5} />
+                <motion.div
+                  whileHover={{ y: -6 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  className="group flex cursor-default flex-col items-center rounded-2xl bg-paper p-6 text-center shadow-sm ring-1 ring-ink/10 transition-colors duration-300 hover:bg-ink"
+                >
+                  <span className="grid h-16 w-16 place-items-center rounded-full border border-red/30 bg-cream text-red transition-colors duration-300 group-hover:border-red group-hover:bg-red group-hover:text-white">
+                    <type.icon
+                      size={26}
+                      strokeWidth={1.5}
+                      className="transition-transform duration-300 group-hover:scale-110"
+                    />
                   </span>
-                  <h3 className="mt-4 text-sm font-bold text-ink">
+                  <h3 className="mt-4 text-sm font-bold text-ink transition-colors duration-300 group-hover:text-white">
                     {type.title}
                   </h3>
-                  <p className="mt-2 text-[13px] leading-relaxed text-ink/60">
+                  <p className="mt-2 text-[13px] leading-relaxed text-ink/60 transition-colors duration-300 group-hover:text-white/60">
                     {type.description}
                   </p>
-                </div>
+                </motion.div>
               </Reveal>
             ))}
           </div>
@@ -67,7 +76,7 @@ export default function PartnerWithUsPage() {
             {submitted ? (
               <div className="py-10 text-center">
                 <h3 className="font-display text-xl uppercase text-ink">
-                  Thanks — message sent
+                  Thanks, message sent
                 </h3>
                 <p className="mt-2 text-sm text-ink/60">
                   Our partnerships team will get back to you within a few
@@ -86,27 +95,12 @@ export default function PartnerWithUsPage() {
                   Tell us about your organisation
                 </h3>
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                  <label className="block">
-                    <span className="mb-1.5 block text-xs font-semibold uppercase tracking-[0.08em] text-ink/50">
-                      Organisation
-                    </span>
-                    <input
-                      required
-                      type="text"
-                      className="w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-red/30"
-                    />
-                  </label>
-                  <label className="block">
-                    <span className="mb-1.5 block text-xs font-semibold uppercase tracking-[0.08em] text-ink/50">
-                      Email
-                    </span>
-                    <input
-                      required
-                      type="email"
-                      className="w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-red/30"
-                    />
-                  </label>
+                  <Field label="Full name" type="text" />
+                  <Field label="Organisation" type="text" />
+                  <Field label="Email" type="email" />
+                  <Field label="Contact number" type="tel" />
                 </div>
+                <Field label="Location" type="text" placeholder="City, country" />
                 <label className="block">
                   <span className="mb-1.5 block text-xs font-semibold uppercase tracking-[0.08em] text-ink/50">
                     What did you have in mind?
@@ -129,5 +123,29 @@ export default function PartnerWithUsPage() {
         </div>
       </section>
     </main>
+  );
+}
+
+function Field({
+  label,
+  type = "text",
+  placeholder,
+}: {
+  label: string;
+  type?: string;
+  placeholder?: string;
+}) {
+  return (
+    <label className="block">
+      <span className="mb-1.5 block text-xs font-semibold uppercase tracking-[0.08em] text-ink/50">
+        {label}
+      </span>
+      <input
+        required
+        type={type}
+        placeholder={placeholder}
+        className="w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-sm text-ink placeholder:text-ink/40 focus:outline-none focus:ring-2 focus:ring-red/30"
+      />
+    </label>
   );
 }

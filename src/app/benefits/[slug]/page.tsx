@@ -125,26 +125,38 @@ export default async function BenefitPage({
           <h2 className="font-display text-2xl uppercase text-ink sm:text-3xl">
             More reasons men do Broformer
           </h2>
-          <div className="mx-auto mt-10 grid max-w-3xl grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4">
+          <div className="mx-auto mt-10 flex max-w-4xl flex-wrap justify-center gap-5">
             {others.map((b, i) => (
-              <Reveal key={b.slug} delay={i * 0.05}>
-                <Link
-                  href={`/benefits/${b.slug}`}
-                  className="group flex flex-col items-center text-center"
-                >
-                  <span className="grid h-16 w-16 place-items-center rounded-full border border-red/30 text-red transition-colors duration-300 group-hover:border-red group-hover:bg-red group-hover:text-white">
-                    <b.icon size={26} strokeWidth={1.5} />
-                  </span>
-                  <h3 className="mt-3 text-sm font-bold uppercase tracking-[0.08em] text-ink">
-                    {b.title}
-                  </h3>
-                  <p className="mt-1.5 text-xs leading-snug text-ink/55 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    {b.tagline}
-                  </p>
-                  <span className="mt-1 inline-flex items-center gap-1 text-xs font-bold text-red opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    Learn more
-                    <ArrowRight size={12} />
-                  </span>
+              <Reveal
+                key={b.slug}
+                delay={i * 0.05}
+                className="h-full w-[calc(50%-0.625rem)] sm:w-[calc(25%-0.9375rem)]"
+              >
+                <Link href={`/benefits/${b.slug}`} className="group block h-full">
+                  <div className="flex h-full min-h-[228px] cursor-pointer flex-col items-center rounded-2xl bg-cream p-5 text-center shadow-sm ring-1 ring-ink/10 transition-colors duration-300 hover:bg-ink">
+                    <span className="grid h-14 w-14 shrink-0 place-items-center rounded-full border border-red/30 bg-paper text-red transition-colors duration-300 group-hover:border-red group-hover:bg-red group-hover:text-white">
+                      <b.icon
+                        size={24}
+                        strokeWidth={1.5}
+                        className="transition-transform duration-300 group-hover:scale-110"
+                      />
+                    </span>
+                    <div className="mt-3 flex flex-1 flex-col">
+                      <h3 className="text-sm font-bold uppercase tracking-[0.08em] text-ink transition-colors duration-300 group-hover:text-white">
+                        {b.title}
+                      </h3>
+                      <p className="mt-1.5 text-xs leading-snug text-ink/55 transition-colors duration-300 group-hover:text-white/60">
+                        {b.tagline}
+                      </p>
+                      <span className="mt-auto inline-flex w-fit items-center gap-1 self-center pt-2 text-xs font-bold text-red">
+                        Learn more
+                        <ArrowRight
+                          size={12}
+                          className="transition-transform duration-300 group-hover:translate-x-1"
+                        />
+                      </span>
+                    </div>
+                  </div>
                 </Link>
               </Reveal>
             ))}

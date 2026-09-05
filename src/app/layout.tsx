@@ -16,7 +16,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Broformer — The Global Home of Men's Reformer Pilates",
+  title: "Broformer: The Global Home of Men's Reformer Pilates",
   description:
     "Find men's reformer Pilates classes around the world. Broformer is the global directory and movement connecting men with studios building a stronger, more mobile community.",
 };

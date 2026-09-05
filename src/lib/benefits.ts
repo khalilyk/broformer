@@ -1,10 +1,10 @@
 import {
-  Accessibility,
   Dumbbell,
   Footprints,
   Heart,
   Hourglass,
   PersonStanding,
+  StretchHorizontal,
   Target,
   Move,
   type LucideIcon,
@@ -62,7 +62,7 @@ export const BENEFITS: Benefit[] = [
   {
     slug: "flexibility",
     title: "Flexibility",
-    icon: Accessibility,
+    icon: StretchHorizontal,
     tagline: "Move better, feel better and do more of what you love.",
     seoDescription:
       "Flexibility training for men that doesn't feel like a yoga class — how reformer Pilates builds range of motion through resistance.",

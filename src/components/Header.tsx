@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useTypewriter } from "@/hooks/useTypewriter";
 import GlowLink from "./GlowLink";
 import Logo from "./Logo";
 
@@ -14,9 +15,17 @@ const NAV_LINKS = [
   { label: "Journal", href: "/journal" },
 ];
 
+const ANNOUNCEMENTS = [
+  "The Global Home of Men's Reformer Pilates",
+  "1,000,000 Men Moving Worldwide: Join The Movement",
+  "Find A Men's-Friendly Reformer Class Near You",
+  "Studios: List Your Classes For Free",
+];
+
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const announcement = useTypewriter(ANNOUNCEMENTS, { pause: 30000, cursor: false });
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -42,7 +51,7 @@ export default function Header() {
     >
       <div className="w-full bg-red py-1.5 text-center">
         <span className="text-[9px] font-semibold uppercase tracking-[0.2em] text-white md:text-[11px]">
-          The Global Home of Men&apos;s Reformer Pilates
+          {announcement}
         </span>
       </div>
 
