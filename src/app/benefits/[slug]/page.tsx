@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import GearCta from "@/components/GearCta";
 import PhotoBlock from "@/components/PhotoBlock";
 import Reveal from "@/components/Reveal";
+import SearchBar from "@/components/SearchBar";
 import { BENEFITS, getBenefit } from "@/lib/benefits";
 
 export function generateStaticParams() {
@@ -37,7 +40,17 @@ export default async function BenefitPage({
 
   return (
     <main>
-      <section className="bg-ink pb-14 pt-32 md:pb-20 md:pt-40">
+      <section className="relative isolate flex min-h-[60vh] items-end overflow-hidden bg-ink pb-14 pt-32 md:min-h-[65vh] md:pb-20 md:pt-40">
+        <Image
+          src="/header.png"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="absolute inset-0 -z-10 object-cover"
+        />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black via-black/70 to-black/40" />
+
         <div className="container-x">
           <Reveal>
             <Link
@@ -47,15 +60,15 @@ export default async function BenefitPage({
               <ArrowLeft size={14} />
               Why Broformer
             </Link>
-            <div className="mt-6 flex items-center gap-4">
-              <span className="grid h-16 w-16 shrink-0 place-items-center rounded-full border border-red/40 text-red">
-                <benefit.icon size={30} strokeWidth={1.5} />
+            <div className="mt-6 flex items-center gap-5">
+              <span className="grid h-20 w-20 shrink-0 place-items-center rounded-full border border-red/40 text-red md:h-24 md:w-24">
+                <benefit.icon size={38} strokeWidth={1.5} />
               </span>
               <div>
                 <span className="text-xs font-semibold uppercase tracking-[0.2em] text-red">
                   Why Men Do Broformer
                 </span>
-                <h1 className="font-display text-3xl uppercase leading-[0.95] text-white sm:text-4xl md:text-5xl">
+                <h1 className="font-display text-5xl uppercase leading-[0.95] text-white sm:text-6xl md:text-7xl lg:text-8xl">
                   {benefit.title}
                 </h1>
               </div>
@@ -89,30 +102,19 @@ export default async function BenefitPage({
               ))}
             </div>
 
-            <div className="mt-10 flex flex-wrap gap-3">
-              <Link
-                href="/find-a-class"
-                className="rounded-full bg-red px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.1em] text-white transition-all duration-300 hover:bg-ink"
-              >
-                Find A Class
-              </Link>
-              <Link
-                href="/journal"
-                className="rounded-full border border-ink/20 px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.1em] text-ink transition-all duration-300 hover:border-ink hover:bg-ink hover:text-white"
-              >
-                Read The Journal
-              </Link>
+            <div className="mt-10">
+              <SearchBar />
             </div>
           </Reveal>
         </div>
       </section>
 
       <section className="bg-paper py-16 md:py-24">
-        <div className="container-x">
+        <div className="container-x text-center">
           <h2 className="font-display text-2xl uppercase text-ink sm:text-3xl">
             More reasons men do Broformer
           </h2>
-          <div className="mt-10 grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4">
+          <div className="mx-auto mt-10 grid max-w-3xl grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4">
             {others.map((b, i) => (
               <Reveal key={b.slug} delay={i * 0.05}>
                 <Link
@@ -135,6 +137,8 @@ export default async function BenefitPage({
           </div>
         </div>
       </section>
+
+      <GearCta />
     </main>
   );
 }

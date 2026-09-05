@@ -1,7 +1,11 @@
 import { ArrowRight, ShoppingBag } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { PRODUCTS } from "@/lib/products";
+import PhotoBlock from "./PhotoBlock";
 import Reveal from "./Reveal";
+
+const FEATURED_PRODUCTS = PRODUCTS.slice(0, 4);
 
 export default function GearCta() {
   return (
@@ -29,6 +33,31 @@ export default function GearCta() {
               <h2 className="mt-2 font-display text-3xl uppercase text-white sm:text-4xl">
                 Train like you mean it.
               </h2>
+
+              <div className="mt-9 grid w-full max-w-2xl grid-cols-2 gap-4 sm:grid-cols-4">
+                {FEATURED_PRODUCTS.map((product) => (
+                  <Link
+                    key={product.slug}
+                    href="/shop"
+                    className="group/product text-left"
+                  >
+                    <div className="overflow-hidden rounded-xl ring-1 ring-white/15">
+                      <PhotoBlock
+                        label={product.name}
+                        glow="center"
+                        className="aspect-square transition-transform duration-500 ease-out group-hover/product:scale-105"
+                      />
+                    </div>
+                    <p className="mt-2 text-xs font-bold text-white">
+                      {product.name}
+                    </p>
+                    <p className="text-[11px] text-white/50">
+                      {product.price}
+                    </p>
+                  </Link>
+                ))}
+              </div>
+
               <Link
                 href="/shop"
                 className="group mt-8 inline-flex items-center gap-2 rounded-full bg-red px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.1em] text-white transition-all duration-300 hover:bg-white hover:text-ink"

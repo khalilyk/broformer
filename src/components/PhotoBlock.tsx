@@ -43,7 +43,6 @@ export default function PhotoBlock({
       <div className="absolute inset-0 flex items-center justify-center opacity-[0.12]">
         <Icon strokeWidth={0.75} className="h-2/3 w-2/3 text-white" />
       </div>
-      <div className="absolute inset-0 ring-1 ring-inset ring-white/10" />
     </div>
   );
 }

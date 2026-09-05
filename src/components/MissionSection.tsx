@@ -1,12 +1,10 @@
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import PhotoBlock from "./PhotoBlock";
 import Reveal from "./Reveal";
 
 export default function MissionSection() {
   return (
     <section className="bg-cream py-20 md:py-28">
-      <div className="container-x grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
+      <div className="container-x grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-stretch lg:gap-16">
         <Reveal>
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-red">
             Why We Built This
@@ -28,29 +26,30 @@ export default function MissionSection() {
               actually show up for yourself every week.
             </p>
             <p>
+              We started as a small group of guys training together,
+              tired of walking into rooms built for someone else and
+              tired of training programs with no accountability built in.
+              So we built the thing we wished existed: a directory that
+              points men to studios that actually welcome them, and a
+              set of standards — a men&apos;s class, a straightforward
+              way in, real coaching — that studios could build around.
+            </p>
+            <p>
               Because the hardest part of getting stronger was never the
               exercise. It was starting — and then not quitting on
-              yourself.
+              yourself. That&apos;s the whole mission: fewer excuses,
+              more men moving, and a global standard for what a
+              men&apos;s reformer class should feel like.
             </p>
           </div>
-          <Link
-            href="/about"
-            className="group mt-7 inline-flex items-center gap-2 text-sm font-bold text-red transition-colors hover:text-ink"
-          >
-            Read Our Full Story
-            <ArrowRight
-              size={16}
-              className="transition-transform duration-300 group-hover:translate-x-1"
-            />
-          </Link>
         </Reveal>
 
-        <Reveal delay={0.1}>
-          <div className="overflow-hidden rounded-2xl">
+        <Reveal delay={0.1} className="h-full">
+          <div className="h-full min-h-[320px] overflow-hidden rounded-2xl">
             <PhotoBlock
               label="A man committing to his training"
               glow="center"
-              className="aspect-[4/5]"
+              className="h-full"
             />
           </div>
         </Reveal>
