@@ -46,13 +46,16 @@ export default function StudioCta() {
             List your studio on Broformer and connect with thousands of men
             looking for reformer classes.
           </p>
-          <div className="mt-7 flex flex-wrap gap-3">
+          <div className="mt-7">
             <Link
               href="/list-your-studio"
-              className="rounded-full bg-red px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.1em] text-white transition-all duration-300 hover:bg-white hover:text-ink active:scale-95"
+              className="block w-full rounded-full bg-red px-6 py-3.5 text-center text-xs font-semibold uppercase tracking-[0.1em] text-white transition-all duration-300 hover:bg-white hover:text-ink active:scale-95"
             >
               List Your Studio
             </Link>
+            <p className="mt-3 text-center text-xs text-white/40">
+              Wherever you are — we welcome studios anywhere in the world.
+            </p>
           </div>
         </Reveal>
 
