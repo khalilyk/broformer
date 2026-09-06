@@ -5,6 +5,8 @@ export type Studio = {
   country: string;
   classTypes: string[];
   description: string;
+  about?: string;
+  timetable?: string;
   website: string;
 };
 
@@ -17,6 +19,8 @@ export const STUDIOS: Studio[] = [
     country: "Australia",
     classTypes: ["Reformer", "Small Group"],
     description: "A boutique wellness club in the Sydney CBD offering reformer Pilates alongside strength training, HIIT and recovery therapies.",
+    about: "SOMA Collection positions itself less as a typical Pilates studio and more as an exclusive, members-only wellness club built around strength, recovery and long-term health. The founders keep membership numbers deliberately small so programming can stay tailored to each person's goals rather than following a one-size-fits-all class structure. Its approach leans on a longevity-minded, science-informed philosophy, blending reformer work with strength training and recovery modalities rather than treating Pilates as a standalone modality. The coaching team is notably varied in background, drawing instructors with roots in military training, MMA and professional dance alongside specialists in nutrition, women's health and injury prevention. That mix gives the club a slightly more athletic, performance-oriented edge than a typical boutique studio. Overall the vibe reads as polished and private-club-like, aimed at members who want a curated, high-touch experience rather than a drop-in class scene.",
+    timetable: "No class-by-class timetable is published, but the club is generally open weekdays from around 4:30am to 10pm, with shorter weekend hours (roughly 6am to 6pm). Check their site for the current group class schedule.",
     website: "https://somacollection.com.au/",
   },
   {
@@ -26,6 +30,7 @@ export const STUDIOS: Studio[] = [
     country: "Australia",
     classTypes: ["Reformer", "Beginners"],
     description: "Low-impact, 50-minute reformer classes in the heart of the Sydney CBD, suited to all fitness levels.",
+    about: "Muse Pilates markets itself around the idea that reformer Pilates should feel approachable rather than intimidating, explicitly rejecting the notion that you need to already be fit or naturally coordinated to walk in the door. The brand's guiding idea is that its studios should function as a brief escape from a busy day, a calm space where clients can set aside their to-do list for the length of a class. On the training side, the reformer is used to build full-body strength through controlled, resistance-based movement, with an emphasis on posture, alignment and core conditioning delivered by instructors who adapt exercises to different ability levels. Classes are organized by level, from beginner-friendly Fundamentals through more demanding Advanced and HIIT-style formats, so members can progress over time. The brand also leans into a sense of built-in community, framing the studio experience as something people return to for both the workout and the social connection. With multiple locations across NSW, ACT and Queensland, the studio design aims for a warm, boutique feel despite operating at a larger multi-site scale.",
     website: "https://musepilates.com.au/sydney/",
   },
   {
@@ -35,6 +40,8 @@ export const STUDIOS: Studio[] = [
     country: "Australia",
     classTypes: ["Reformer", "Tower"],
     description: "Reformer, tower and studio Pilates across Manly, Dee Why and the Sydney CBD, from private sessions to group classes.",
+    about: "Dynamic Pilates is built around the BASI Pilates method, a globally recognized training system dating back to 1989 that blends classical Pilates principles with a more scientific, anatomically grounded approach to movement. The studio frames its work as deeply individualized, emphasizing that every client's body and lived experience shapes how they move, and that instruction should adapt accordingly rather than applying a generic template. Instructors are trained to BASI's teacher-trainer standard, with specializations that include athletic rehabilitation and postural alignment, giving classes a more technical, corrective edge alongside the fitness benefit. Group sessions are deliberately kept small, capped at eight participants, to preserve a level of individual attention associated with more clinical Pilates instruction. The studio also offers private, duet and semi-private formats for clients who want closer coaching. With an extensive weekly schedule spanning early mornings, lunchtimes, evenings and weekends, it's positioned as a serious, results-oriented option on Sydney's Northern Beaches rather than a purely boutique fitness experience.",
+    timetable: "Classes run across all seven days of the week with more than 40 sessions on offer, including early-morning, lunchtime, late-evening and weekend slots. Exact times are listed on their booking page.",
     website: "https://www.dynamicpilates.com.au/",
   },
   {
@@ -44,6 +51,7 @@ export const STUDIOS: Studio[] = [
     country: "Australia",
     classTypes: ["Small Group", "Private Sessions"],
     description: "Physiotherapist-led reformer Pilates in the Sydney CBD, with classes capped at four clients for hands-on coaching.",
+    about: "City Physio Pilates operates out of the Sydney CBD with a practical pitch built on small classes, expert instruction and efficient, targeted workouts rather than an elaborate brand story. Rather than publishing a founding narrative, the business leans on its physiotherapy roots, offering reformer and equipment-based Pilates alongside more clinical, rehab-oriented services. Class sizes are kept intentionally tight, with group reformer sessions capped at four people and small-group equipment classes limited to three, suggesting an emphasis on individualized correction more typical of a physio-led studio than a high-volume fitness chain. Private and duo sessions are also available for clients who want one-on-one attention. The overall impression is efficient and no-frills, aimed at CBD workers seeking a focused, physio-informed Pilates session rather than a lifestyle-brand experience.",
     website: "https://cityphysio.com.au/pilates/",
   },
   {
@@ -53,6 +61,7 @@ export const STUDIOS: Studio[] = [
     country: "Australia",
     classTypes: ["Reformer", "Gym Chain"],
     description: "45-minute Reform Pilates classes at Fitness First's George Street and Park Street clubs in the Sydney CBD.",
+    about: "As part of the larger Fitness First gym network, Reform Pilates is positioned as a structured, results-driven add-on to the chain's broader group fitness offering rather than a standalone boutique studio. The program centers on precision and control on the reformer, teaching alignment and intentional movement through a tiered system of movement series so both newcomers and experienced exercisers can find an appropriate level. Classes blend pre-programmed, on-screen guided workouts with the presence of a certified in-room instructor who gives real-time form corrections, combining consistency with a degree of personal coaching. Programming is refreshed roughly every three months to keep movement patterns and challenge level from going stale. Sessions run for a standard 45 minutes and sometimes incorporate small props like weighted balls to build lean muscle and functional strength. Overall, the atmosphere is more of a mainstream gym-class environment than an intimate studio, built for members already inside the Fitness First ecosystem looking to add reformer work to their routine.",
     website: "https://www.fitnessfirst.com.au/reform-pilates/sydney/",
   },
 
@@ -64,6 +73,7 @@ export const STUDIOS: Studio[] = [
     country: "Australia",
     classTypes: ["Reformer", "Small Group"],
     description: "A community-focused reformer studio in Coburg, with classes capped at ten clients for mindful, strength-based movement.",
+    about: "Kōra Pilates grew out of founder Subriah's own recovery journey. After discovering Pilates while healing from an injury, she set out to bring a studio to the Coburg neighbourhood she felt was missing one. The name and philosophy nod to a broader idea of core that extends beyond physical strength alone, treating the practice as a way to build mental and emotional resilience alongside a strong midsection. The space was custom-designed by Kennedy Nolan, with details chosen specifically to create a calming sensory environment before clients even start moving. Classes mix classical Pilates fundamentals with more contemporary, flowing sequences, organized into distinct formats so members can match a session to their mood or energy level. The studio explicitly welcomes total beginners through experienced practitioners, and also caters to pre- and postnatal clients, reinforcing its community-first, neighbourhood-studio feel over a high-intensity fitness vibe.",
     website: "https://www.korapilates.com.au/",
   },
   {
@@ -73,6 +83,7 @@ export const STUDIOS: Studio[] = [
     country: "Australia",
     classTypes: ["Reformer", "All Levels"],
     description: "Boutique reformer studios in Essendon and North Melbourne, open seven days a week for all fitness levels.",
+    about: "Rise Pilates runs two Melbourne locations, in Essendon and North Melbourne, structured around a clear three-level progression system rather than a single blended class format. Level 1 is built for beginners or people returning after a break, focusing on full-body coordination and reconnecting with basic movement patterns. Level 2 increases spring resistance and moves through exercises more quickly, while Level 3 is reserved for members with consistent attendance and delivers high-intensity reformer work with minimal rest between exercises. This tiered structure lets instructors layer modifications within a single class so people of different abilities can train together. The overall atmosphere is pitched as approachable and community-oriented, balancing a genuinely challenging workout with a calm, relaxed feel rather than a high-pressure fitness-class energy.",
     website: "https://risepilates.com.au/",
   },
   {
@@ -82,6 +93,7 @@ export const STUDIOS: Studio[] = [
     country: "Australia",
     classTypes: ["Reformer", "Tower"],
     description: "Boutique reformer and tower Pilates across three Melbourne studios, with group classes limited to eleven clients.",
+    about: "Villa Pilates was founded by Vivienne, whose own experience of burnout during Melbourne's lockdowns turned movement from a fitness obligation into a tool for reconnecting with herself and rebuilding routine and community, a story that still shapes the studio's brand today. The training philosophy centers on precise, intentional movement, prioritizing form and presence in each exercise so that even group classes feel personal rather than anonymous. Beyond standard reformer sessions, the studio also runs barre and chair-based group formats, plus private and corporate offerings. Its instructor team is notably large, with more than two dozen certified teachers holding varied credentials, including specializations in prenatal and postnatal work and rehabilitation, and several offering instruction in Mandarin or Cantonese. Scheduling and bookings are handled entirely through a dedicated studio app, reflecting a modern, tech-forward operational style.",
     website: "https://www.villapilates.com.au/",
   },
   {
@@ -91,6 +103,7 @@ export const STUDIOS: Studio[] = [
     country: "Australia",
     classTypes: ["Reformer", "High Intensity"],
     description: "High-energy reformer classes at KX Pilates' Melbourne CBD and South Melbourne studios, for beginners through advanced.",
+    about: "KX Pilates is a larger, multi-location reformer Pilates brand that emphasizes a structured, expert-led 50-minute class format designed to progressively challenge members over time. Rather than centering its identity on a single founding story, the brand leans into a consistent, standardized training philosophy focused on helping members move better, build strength and keep advancing session after session. The curriculum spans a range of intensities, from foundational and endurance-building classes to lower-impact recovery-focused sessions, giving members flexibility depending on how they're feeling that day. Newer members are funneled into dedicated basics classes where trainers walk them through fundamentals step by step before they progress to the broader class schedule. As a nationally recognizable chain, the brand trades on scale and consistency across its many studios rather than the intimacy of a single neighbourhood studio.",
     website: "https://kxpilates.com.au/",
   },
   {
@@ -100,6 +113,8 @@ export const STUDIOS: Studio[] = [
     country: "Australia",
     classTypes: ["Reformer", "Flexible Scheduling"],
     description: "A Richmond reformer studio with classes from just $5 and a free five-day trial for new clients.",
+    about: "Pronto Pilates takes a distinctly different approach from most reformer studios by replacing live in-room instruction with professionally filmed, on-screen classes shown throughout the day. The studio's central pitch is affordability and accessibility, positioning itself against traditional studios that often charge $25 to $50 a class by offering entry-level pricing from around $5 per session. Behind the scenes, the brand invests heavily in production, with classes choreographed and filmed by experienced instructors to maintain a consistent standard across every session and every location. The Richmond studio itself is equipped with eight reformers and is designed to feel clean, calm and welcoming despite the screen-based format. This model trades the personal touch of a live instructor for scheduling flexibility and low cost, appealing to members who prioritize convenience and price over one-on-one coaching relationships.",
+    timetable: "Richmond classes run seven days a week from about 5:15am to 10:30pm, with as many as 23 sessions offered daily across formats such as Open, Foundation, Restore, Stretch and Orientation.",
     website: "https://www.prontopilates.com.au/vic/richmond/",
   },
 
@@ -111,6 +126,7 @@ export const STUDIOS: Studio[] = [
     country: "UK",
     classTypes: ["Reformer", "Signature"],
     description: "Reformer Pilates studios across Shoreditch, Hackney and Elephant & Castle.",
+    about: "Tempo 301 is a London reformer studio group with three locations across Hackney, Shoreditch and Elephant Park, built on more than sixteen years of experience in the fitness space. Its signature Tempo Pilates method pairs deliberate, controlled reformer movement with curated music, aiming to make workouts feel energizing rather than punishing. Every coach completes the studio's own in-house certification program on top of a recognized mat Pilates qualification, and classes are kept small so instructors can give hands-on corrections throughout each session. Beyond reformer work, the studio also runs strength, barre, mat and yoga formats. The overall positioning leans toward an upbeat, music-forward take on Pilates that frames fitness as being about how you feel as much as how you look.",
     website: "https://tempo301.co.uk/",
   },
   {
@@ -120,6 +136,7 @@ export const STUDIOS: Studio[] = [
     country: "UK",
     classTypes: ["Reformer", "Cardio"],
     description: "45-minute low-impact resistance classes on the Rowformer and Bike, in the heart of Islington.",
+    about: "STRONG Pilates' Islington location bills itself as a hybrid workout rather than traditional reformer Pilates, blending roughly 45 minutes of low-impact resistance work with strength blocks and cardio intervals performed on custom Rowformer or bike equipment. The studio is built into a converted lower-ground office space in central Islington, laid out as one open training floor rather than separate private rooms. Its stated mission centers on helping members live better through smarter training and stronger community connection. Programming changes daily by design, so members are meant to encounter variety and fresh challenge session to session instead of a repeating routine. Post-workout amenities like a dedicated recovery and stretching area, showers and cold towels point to a polished, boutique-gym atmosphere aimed at busy urban clients.",
     website: "https://strongpilates.co.uk/location/islington/",
   },
   {
@@ -129,6 +146,8 @@ export const STUDIOS: Studio[] = [
     country: "UK",
     classTypes: ["Reformer", "Classical"],
     description: "One of London's original Pilates teaching studios, with reformer classes at Marble Arch that welcome men and women.",
+    about: "Alan Herdman Pilates is a long-established London studio group known for blending traditional mat-based Pilates with contemporary reformer work into personalized programs rather than a single fixed format. Its focus on functional alignment and everyday movement quality reflects its roots in the classical Pilates lineage associated with founder Alan Herdman. It welcomes a wide range of ages and abilities, offering everything from one-to-one instruction to small group classes across its Marble Arch and Islington locations. The studios operate on an extensive weekly schedule, running sessions essentially every day, which points to a mature, established client base built up over years of operation. The overall atmosphere is measured and instructional, prioritizing individualized correction over a high-energy group fitness vibe.",
+    timetable: "Both locations run classes nearly every day. Marble Arch is open roughly 7:30am to 8pm Monday to Friday, 9am to 3pm Saturday and 10am to 2pm Sunday. Islington is open roughly 7am to 8pm Monday to Friday, 8am to 2pm Saturday and 9am to 2pm Sunday, with reformer classes spread through the week. Confirm exact class times on their site.",
     website: "https://www.alanherdmanpilates.co.uk/",
   },
   {
@@ -147,6 +166,7 @@ export const STUDIOS: Studio[] = [
     country: "UK",
     classTypes: ["Reformer", "Studio"],
     description: "A Notting Hill reformer Pilates studio and showroom from the team behind the FOLD home reformer.",
+    about: "FOLD is positioned less as a traditional studio and more as an equipment and app brand, describing itself as a top-selling foldable home reformer with a large community of users. The company highlights design credentials, including multiple industry design awards and a product engineered domestically in the UK. Rather than centering on in-person classes, FOLD's training approach leans on a companion digital app offering more than 200 workouts spanning different ability levels, meant to be done at home on its foldable machine. It also maintains relationships with partner studios around the world where its equipment is used, and keeps a London showroom for people to see the reformer in person before buying. Its distinctiveness is less about a signature teaching philosophy and more about accessibility, bringing reformer-style training into people's homes.",
     website: "https://foldreformer.com/",
   },
 
@@ -158,6 +178,8 @@ export const STUDIOS: Studio[] = [
     country: "UAE",
     classTypes: ["Reformer", "Small Group"],
     description: "A fully equipped reformer studio in Dubai Marina, with group classes from beginner to advanced and private sessions.",
+    about: "11 Pilates began in the UK in 2019 before opening a dedicated reformer studio in Dubai Marina, equipping the space with Merrithew reformers and a Cadillac unit. The training approach stays close to classical Pilates fundamentals: strength, flexibility, coordination, balance, posture and body awareness, while adding weighted props and dynamic sequencing to raise the intensity for more advanced members. Its class menu spans a foundational Core Reformer format, an intensified Core Plus option and a faster-paced Dynamic Reformer class, so members can move between skill levels within one studio. Instructors are described as upbeat and attentive, teaching to music in a space that overlooks the Marina waterfront. The overall atmosphere reads as social and scenic rather than clinical, pairing a serious equipment setup with a relaxed, welcoming energy.",
+    timetable: "Classes are offered seven days a week, though the site does not list specific daily start times. Check their booking page for the current schedule.",
     website: "https://11pilates.ae/",
   },
   {
@@ -167,6 +189,8 @@ export const STUDIOS: Studio[] = [
     country: "UAE",
     classTypes: ["Reformer", "Studio"],
     description: "A bright, beachfront reformer Pilates studio on Palm Jumeirah.",
+    about: "Aire is a reformer Pilates studio on Palm Jumeirah in Dubai that frames its work around mindful movement rather than pure physical output. The brand's stated mission is transforming bodies and minds by connecting strength, flexibility and mental clarity in the same session, treating the reformer as a tool for calm as much as conditioning. Its programming is organized around three core outcomes: improved balance and stability, deeper core strength and general mind-body wellbeing. The brand identity leans more on its beachfront Palm Jumeirah setting and wellness framing than on a named founder or teaching lineage. Being open long hours every day of the week suggests a studio built for a flexible, drop-in lifestyle rather than a tightly scheduled boutique format.",
+    timetable: "Open daily from roughly 7am to 9pm, though specific individual class times are not listed on their site.",
     website: "https://www.aire.ae/",
   },
   {
@@ -185,6 +209,8 @@ export const STUDIOS: Studio[] = [
     country: "UAE",
     classTypes: ["Reformer", "Studio"],
     description: "A premier reformer Pilates studio in Dubai built around posture and lean-muscle programming.",
+    about: "MYGLOW was founded in Dubai in 2021 by instructor Renee Jing, who set out to build an inclusive, community-driven Pilates space under a Glow and Grow ethos. The studio's philosophy ties wellness to a balanced body and mind rather than aesthetics alone, and its programming ranges from group reformer classes to one-on-one private training. Renee brings a deep teaching background, and the wider instructor team is presented as certified and attentive to modifying moves for different ability levels. Equipment is described as modern and versatile, supporting varied class formats built around core strength, flexibility and mind-body awareness. The atmosphere is pitched as supportive and uplifting, aiming to make newcomers and experienced practitioners alike feel part of one community.",
+    timetable: "Classes run Monday to Friday from about 9:30am to 8:30pm, and on weekends from about 10:30am to 5pm.",
     website: "https://myglowdubai.com/",
   },
   {
@@ -194,6 +220,7 @@ export const STUDIOS: Studio[] = [
     country: "UAE",
     classTypes: ["Reformer", "Men's Classes"],
     description: "A Dubai Silicon Oasis reformer studio offering ladies-only, mixed-gender, men's evening and teen classes.",
+    about: "FlexLounge is a community-led reformer Pilates studio located in Dubai Silicon Oasis. Its stated aim is to give members a space to reconnect with strength, flexibility and mindful movement inside an environment meant to feel warm and supportive rather than clinical or intimidating. The community-led framing suggests a smaller, relationship-driven studio culture rather than a large multi-location chain, with the overall positioning emphasizing personal reconnection through movement over performance-driven marketing. Alongside its mixed-gender and ladies-only sessions, the studio runs dedicated men's evening classes, a rarer offering among reformer studios.",
     website: "https://www.flexloungedxb.com/",
   },
 
@@ -205,6 +232,7 @@ export const STUDIOS: Studio[] = [
     country: "USA",
     classTypes: ["Reformer", "Multiple Locations"],
     description: "One of Manhattan's highest-rated Pilates studios, with reformer classes in SoHo, Bowery, West Village and Flatiron.",
+    about: "New York Pilates traces back to 2013, when Heather Andersen opened a small group reformer studio in a West Village basement, reportedly the first of its kind in Manhattan. Andersen came to the practice through a background in classical ballet before turning her attention to reformer work and anatomy-driven sequencing. She later partnered with Brion Isaacs, who shapes the brand's visual and cultural identity. Together they've grown the original basement space into a multi-story flagship plus additional New York City locations and outposts in Montauk and Southampton. The studio positions itself less as a gym and more as a lifestyle brand where movement, design and fashion overlap, with classes emphasizing precise, intelligently sequenced reformer work. The overall feel leans stylish and editorial, reflecting its reputation as a favorite among the fashion and media set.",
     website: "https://www.newyorkpilates.com/",
   },
   {
@@ -214,6 +242,7 @@ export const STUDIOS: Studio[] = [
     country: "USA",
     classTypes: ["Reformer", "Small Group"],
     description: "An intimate, small-group reformer studio with locations in Flatiron, NoMad and Park Slope.",
+    about: "BK Pilates was started in 2012 by Marina Kaydanova, who opened a single Brooklyn location after Pilates helped her personally during a demanding corporate career. What began as one studio has since grown into a small multi-location brand spanning New York and the Carolinas. The teaching philosophy centers on meeting each student at their current level, pairing challenge with encouragement rather than a one-size-fits-all format. Marina often references Joseph Pilates' idea that the practice unites body, mind and spirit, and the studio frames reformer work as a complement to other athletic pursuits like running or skiing rather than a replacement for them. The brand leans into an explicitly welcoming, body-inclusive ethos, and studios are described as modern and well-equipped, with an atmosphere built around encouragement over intimidation.",
     website: "https://bkpilates.com/",
   },
   {
@@ -223,6 +252,7 @@ export const STUDIOS: Studio[] = [
     country: "USA",
     classTypes: ["Reformer", "All Levels"],
     description: "Classical and contemporary reformer Pilates for all levels, across East Village, West Village and Kips Bay.",
+    about: "Avea Pilates grew out of owner Carrie Shaffer's own long relationship with the practice. The studio's name blends words meaning sunset in Fijian and strength in Hebrew, a nod to the community Shaffer wanted to build; she has spoken about how Pilates helped her manage living with multiple sclerosis. The studio operates three Manhattan locations (East Village, West Village and Kips Bay), each kept intentionally small and bright, with natural light and limited class sizes so instructors can give close attention to form. Rather than enforcing one rigid house style, Avea gives its certified instructor team latitude to build their own lesson plans, blending classical and contemporary reformer technique. Overall the vibe is calm, clean and community-driven, built around mutual respect among a deliberately varied clientele.",
     website: "https://aveapilates.com/",
   },
   {
@@ -232,6 +262,7 @@ export const STUDIOS: Studio[] = [
     country: "USA",
     classTypes: ["Reformer", "Boutique"],
     description: "A boutique reformer Pilates studio and cafe in Midtown Manhattan's Kips Bay neighborhood.",
+    about: "Holydog Pilates, founded by Anjali Kanter and Ferhat Cetin, takes its name and much of its philosophy from dogs, built around the idea of staying present, joyful and energetic in the body. The studio frames its offering as a broader wellness ritual rather than just a workout, pairing reformer classes with an on-site cafe. Training leans toward controlled, precise movement aimed at building core strength, muscular endurance and body awareness, and the class level skews toward intermediate and advanced practitioners rather than complete beginners. The roughly eight instructors on staff come from varied backgrounds, including dance and personal training, which shows up in a mix of teaching styles. The combination of a boutique fitness studio and cafe gives the space a social, linger-a-while atmosphere uncommon among reformer studios.",
     website: "https://holydogpilates.com/",
   },
   {
@@ -241,6 +272,7 @@ export const STUDIOS: Studio[] = [
     country: "USA",
     classTypes: ["Reformer", "Community"],
     description: "A Black-owned reformer Pilates studio in Harlem focused on making wellness more accessible to the community.",
+    about: "Harlem Pilates presents itself as a small, neighbourhood-first studio built around accessibility rather than an elite fitness image. Its stated mission is to make Pilates available to the surrounding Harlem community regardless of fitness level, age, body type or budget, which comes through in class sizes kept small enough for personalized coaching. The studio offers both group classes and private sessions, with instructors customizing modifications so each participant can work within their own body's limits rather than chasing a uniform standard. It positions itself as a resource for a wide cross-section of the community, from kids and busy professionals to new mothers and dedicated long-time practitioners. Beyond movement classes, the studio also runs wellness workshops and events. The overall impression is of a cozy, low-key space prioritizing inclusion over intensity.",
     website: "https://www.harlempilates.com/",
   },
 
@@ -252,6 +284,7 @@ export const STUDIOS: Studio[] = [
     country: "USA",
     classTypes: ["Reformer", "Multiple Locations"],
     description: "A disciplined, method-driven reformer studio with locations in Venice, Santa Monica, Redondo Beach and Melrose.",
+    about: "Karen Lord Pilates Movement is built around founder Karen Lord's own eclectic background spanning fashion, art, music and design, which she has folded into what the studio calls the Karen Lord Method. That method centers on precise mechanics, thoughtfully sequenced exercises and gradual progression intended to build lasting strength, posture and body awareness rather than quick, flashy results. The brand now spans four Los Angeles-area locations (Venice, Santa Monica, Redondo Beach and Melrose), and all instructors are trained to deliver the same method with consistent discipline across every studio. Design and music are treated as core parts of the experience, with each space intentionally curated to support focus and a polished, boutique feel. It reads as more design-conscious and aesthetics-forward than many reformer studios, blending classical Pilates principles with a contemporary, lifestyle-brand sensibility.",
     website: "https://www.karenlordpilatesmovement.com/",
   },
   {
@@ -261,6 +294,7 @@ export const STUDIOS: Studio[] = [
     country: "USA",
     classTypes: ["Reformer", "Multiple Locations"],
     description: "Classes on WundaBar's own WundaFormer machine, across Los Feliz, West Hollywood and Studio City.",
+    about: "WundaBar Pilates was launched in 2011 by celebrity trainer Amy Jordan, who built it from a single studio into a multi-state fitness brand. Its signature feature is the proprietary WundaFormer, a single machine that combines a reformer, a Wunda chair, a jump board and a ballet bar, allowing varied full-body sequences within one class format. The brand deliberately calls its class leaders Educators rather than trainers, framing instruction around teaching functional anatomy rather than just directing repetitions. Classes are described as high-energy and dynamic, set to music, and aimed at building strength from the inside out. The brand has expanded across California, New York, New Jersey and Tennessee, and also offers an on-demand digital platform for at-home workouts, with an ethos that's explicitly body-inclusive.",
     website: "https://www.wundabar.com/",
   },
   {
@@ -270,6 +304,7 @@ export const STUDIOS: Studio[] = [
     country: "USA",
     classTypes: ["Reformer", "Infrared"],
     description: "Reformer Pilates combined with infrared heat, aimed at improving circulation, flexibility and recovery.",
+    about: "Be Kind Studios was founded by Maxine Bascue, who set out to build the studio she wished existed after feeling limited by other Pilates options. It started in Calabasas and has since expanded to Malibu and Westlake Village. The core method blends classical reformer Pilates with contemporary strength-training principles, aiming for programming that's genuinely challenging while remaining approachable for beginners. The studio's guiding values, described as intentional movement, strong bodies, open hearts and real connection, show up in an emphasis on relationship-building, with staff reportedly making a point of knowing clients by name. Be Kind also runs its own instructor training academy. Studios use premium equipment and are designed with a calm, polished aesthetic, aiming to build a routine people actually want to keep rather than one they force themselves through.",
     website: "https://bekindstudios.com/",
   },
   {
@@ -279,6 +314,7 @@ export const STUDIOS: Studio[] = [
     country: "USA",
     classTypes: ["Reformer", "Studio"],
     description: "A boutique reformer studio in Encino offering private and group classes for all levels.",
+    about: "Rise Up Pilates was founded in Encino by Sarah B., who started the studio during the pandemic as a referral-only operation before it grew into a full community space. The brand leans heavily on a family-style, high-energy atmosphere, with Sarah describing her approach as treating clients like family rather than just members. Instruction draws on a range of formats, mat, reformer, Cadillac work and TRX, set to upbeat contemporary music, with group classes capped at nine reformers alongside private and semi-private options. The instructor team has varied backgrounds, including former film and TV industry professionals. The physical space is frequently described as bright and newly renovated, and the studio markets itself around camaraderie and mutual encouragement as much as the workout itself.",
     website: "https://www.riseuppilates.com/",
   },
   {
@@ -288,6 +324,7 @@ export const STUDIOS: Studio[] = [
     country: "USA",
     classTypes: ["Reformer", "Multiple Locations"],
     description: "Low-impact reformer classes across Mar Vista, Westwood and Studio City.",
+    about: "A Tribe Called Pilates was co-founded in 2018 by Emily and Kris with the stated goal of helping their community reach its fitness goals through reformer-based training. Emily, the lead instructor, brings years of teaching experience from the Santa Monica Pilates scene and designed a tiered class structure that mixes total-body conditioning with sessions targeting specific muscle groups. The studio has grown to three Los Angeles-area locations (Mar Vista, Westwood and Studio City) and frames itself as embedded in each neighbourhood rather than a standalone chain outpost. Community and encouragement are emphasized alongside the physical training itself. A distinctive touch comes from two resident mini poodles, Bear and Teddi, who greet visitors and have become something of a studio mascot. The overall vibe reads as friendly and neighbourhood-oriented rather than high-gloss or exclusive.",
     website: "https://tribepilatesstudio.com/",
   },
 
@@ -299,6 +336,7 @@ export const STUDIOS: Studio[] = [
     country: "Canada",
     classTypes: ["Reformer", "Mat & Barre"],
     description: "Voted one of Toronto's best Pilates studios, offering reformer, mat and barre classes in Trinity Bellwoods.",
+    about: "Muse Movement is a Toronto studio offering reformer, mat and barre classes in small groups, and it has built a reputation as one of the city's most acclaimed boutique studios. Rather than barking corrections, its teachers act more like guides, offering cues and suggestions so members can tune into their own bodies and build independence in their practice. The studio's four guiding values are inclusion, creativity, empowerment and compassion, and that shows up in a welcoming room where newcomers and experienced movers train side by side. Instructors go through the studio's own in-house teacher-training program and are known for their strong grasp of anatomy and movement mechanics. The overall vibe favors connection over competition, emphasizing unplugging from daily stress and reconnecting with how the body feels.",
     website: "https://www.musemovement.ca/",
   },
   {
@@ -308,6 +346,7 @@ export const STUDIOS: Studio[] = [
     country: "Canada",
     classTypes: ["Reformer", "Group Mat"],
     description: "A Little Italy reformer studio fitted with 18 reformer machines, with a second location in Leslieville.",
+    about: "Assembly Movement is a Toronto reformer and mat studio founded by Clio, a former gymnast who trained as an instructor after Pilates helped her rebuild her own strength and flexibility. She opened the studio in spring 2023 with the idea of giving people a place to move and reconnect with one another, and the studio's name nods to that sense of gathering together. Classes lean athletic and contemporary, blending core Pilates principles with touches of dance and yoga so each session carries its own distinct energy. The training approach favors function over form, prioritizing full range of motion, breath control and spinal mobility over chasing a particular look. The overall atmosphere is upbeat and communal, built around the idea that people move better, and feel better, together.",
     website: "https://www.assemblymovement.ca/",
   },
   {
@@ -317,6 +356,7 @@ export const STUDIOS: Studio[] = [
     country: "Canada",
     classTypes: ["Reformer", "Community"],
     description: "A community-driven reformer Pilates studio in Toronto focused on breath, alignment and mindful movement.",
+    about: "Fortides is a boutique reformer studio in Toronto's Roncesvalles neighbourhood, started by Stephanie Spagnolo and Aleks King-Sorrell, who bonded over a shared love of wellness and Pilates while living in London and later set out to open a studio blending classical and contemporary technique. The name and branding draw on the imagery of ocean tides, reflecting a philosophy centered on flow, change and moving toward whatever brings a sense of aliveness and calm. Their signature Fortides Formula strings together progressive, full-body sequences anchored in breathwork and core engagement. The studio keeps classes small and offers entry points for every level, including a dedicated beginner series alongside pre and postnatal and higher-intensity options. Physically, the space is bright, airy and minimally designed, meant to feel like a calm retreat from the surrounding city.",
     website: "https://www.fortidespilates.com/",
   },
   {
@@ -326,6 +366,7 @@ export const STUDIOS: Studio[] = [
     country: "Canada",
     classTypes: ["Reformer", "High Energy"],
     description: "High-energy, high-exertion reformer classes led by certified instructors.",
+    about: "Solis Movement is an Etobicoke studio that pairs reformer Pilates with hot yoga and hot Pilates, positioning itself as a higher-intensity, higher-energy alternative to a typical boutique studio. The brand emphasizes pushing effort and exertion, promising members they'll leave sessions feeling noticeably stronger than when they arrived. Classes run on modern reformer equipment in a sleek, contemporary space that also uses radiant infrared heating panels for its heated formats. The studio describes its team as certified, rigorously trained instructors focused on keeping intense workouts both safe and effective. Beyond the physical training, Solis frames itself as a community hub, aiming to foster camaraderie among members. The overall vibe leans energetic and driven, appealing to people who want an intense, sweat-heavy class alongside a sense of belonging.",
     website: "https://www.solismovement.ca/classes/reformer-pilates",
   },
   {
@@ -335,6 +376,7 @@ export const STUDIOS: Studio[] = [
     country: "Canada",
     classTypes: ["Reformer", "Studio"],
     description: "A neighbourhood reformer Pilates studio on Eastern Avenue in Toronto.",
+    about: "Nice Day Pilates is a reformer studio on Eastern Avenue in Toronto, set in a bright, high-ceilinged space designed to feel open and calming rather than cramped or clinical. Its classes go beyond simple strength work, weaving in mobility, breathing and alignment with an eye toward everyday functional movement rather than just aesthetics. The studio's guiding ethos leans heavily on self-acceptance, courage and inclusivity, values that show up in its teaching approach as much as its brand voice. Instructors are described as supportive and attentive, offering modifications so people at very different fitness levels can take the same class comfortably. The atmosphere is calm, welcoming and unpretentious, positioning the studio as an accessible, mindful take on reformer Pilates rather than a hardcore fitness challenge.",
     website: "https://www.nicedaypilates.ca/",
   },
 
@@ -346,6 +388,7 @@ export const STUDIOS: Studio[] = [
     country: "Japan",
     classTypes: ["Reformer", "Clinical"],
     description: "An English-speaking reformer and clinical Pilates studio near Azabu, Hiroo and Roppongi.",
+    about: "My Body My Pilates is a Tokyo studio founded by Helen Zhang, who turned to Pilates in her late twenties after knee pain made everyday movement difficult, and found that a dedicated practice resolved her pain within about a month while improving her overall fitness. That personal turnaround led her into more than a decade of teaching and, eventually, into running instructor-training programs in both English and Chinese. The studio goes beyond reformer work, offering a fuller range of equipment-based classes including Cadillac, chair, mat and Gyrokinesis, all taught in English in small groups capped at around five people for individualized attention. Its approach treats Pilates as a mind-body discipline as much as a physical one. The instructor team includes specialists in prenatal and postnatal care and clinical rehabilitation, and the atmosphere is described as warm and internationally minded.",
     website: "https://www.mybodymypilates.com/",
   },
   {
@@ -355,6 +398,8 @@ export const STUDIOS: Studio[] = [
     country: "Japan",
     classTypes: ["Reformer", "Full English Support"],
     description: "A reformer studio near Ginza Station offering mat, machine and private lessons with full English support.",
+    about: "Zen Place is a Japanese studio brand, with a Ginza location, built around continuously gathering and refining Pilates and movement knowledge from around the world into a consistently high-caliber lesson. Notably, the brand doesn't call its staff instructors but Whole Body Educators, a label meant to signal that their role goes beyond leading a workout to actively observing each person's condition and correcting how they use their body throughout a session. The curriculum draws on partnerships with established international training organizations, giving its programming a global pedigree. Its stated aim is fairly holistic, framing the practice as working on the mind as much as the body. Overall, the brand comes across as education-first and detail-oriented, more focused on correct movement and long-term learning than on a quick, high-intensity workout.",
+    timetable: "Lessons are offered daily from roughly 6am to 10pm, though no detailed weekly class-by-class timetable is published; booking is handled through a reservation page.",
     website: "https://www.zenplace.co.jp/en",
   },
   {
@@ -364,6 +409,7 @@ export const STUDIOS: Studio[] = [
     country: "Japan",
     classTypes: ["Reformer", "Group Classes"],
     description: "The Omotesando location of the US reformer Pilates franchise, offering group classes with English support.",
+    about: "Club Pilates is a large international franchise brand, with dozens of studios now operating across Japan as part of a chain of more than 1,500 locations worldwide. Rather than a single-founder boutique story, the appeal here is standardization: every studio runs the same structured curriculum across four difficulty tiers, from complete beginners up through advanced practitioners. Classes rotate through eight different formats using a suite of specialized equipment, letting members target different goals without switching studios. The brand markets itself as approachable for people who might feel intimidated by fitness studios, specifically calling out beginners, men and older adults as groups it wants to welcome. Because this is a franchise system rather than a distinctive boutique, the vibe leans more consistent-and-convenient than intimate.",
     website: "https://www.clubpilates.com/",
   },
   {
@@ -373,6 +419,7 @@ export const STUDIOS: Studio[] = [
     country: "Japan",
     classTypes: ["Reformer", "Bilingual"],
     description: "A bilingual reformer Pilates studio in Omotesando welcoming Tokyo's international community.",
+    about: "Rejuvenate Pilates is a classical Pilates studio in Tokyo founded and led by Taeko, who came to the practice after struggling with sciatica and finding that Pilates resolved pain other approaches hadn't touched. That experience prompted a career change, and after spending over a decade living overseas she returned to Tokyo to open the studio. Her teaching philosophy treats the spine as the body's central axis and approaches training as one integrated system rather than a series of isolated muscle exercises. Even in group classes she emphasizes adjusting exercises to the individual, treating instruction as a personalized service rather than a one-size-fits-all format. The studio welcomes a wide range of people, from total beginners to trained dancers and athletes, and offers instruction in both Japanese and English.",
     website: "https://re-juvenatepilates.com/",
   },
   {
@@ -382,6 +429,7 @@ export const STUDIOS: Studio[] = [
     country: "Japan",
     classTypes: ["Reformer", "Rehab & Recovery"],
     description: "English-speaking reformer Pilates delivered alongside physical therapy and rehab services in Tokyo.",
+    about: "Tokyo Physical Therapy is a long-running clinical practice rather than a boutique fitness studio, and it offers reformer Pilates as one of its wellness services alongside physical therapy and rehabilitation care. The practice says it has served Tokyo's English-speaking community for more than 40 years, staffed by therapists licensed in both the United States and Japan. Its framing of reformer Pilates leans clinical and rehab-oriented, describing the equipment-based movements as a gentle, low-impact way to build strength, stability and flexibility while also supporting recovery from pain or injury. This gives the practice a distinctly medical rather than boutique-studio atmosphere, appealing to people looking for reformer training integrated with physical therapy expertise.",
     website: "https://tokyophysicaltherapy.com/our-services/wellness/pilates/reformer/",
   },
 ];

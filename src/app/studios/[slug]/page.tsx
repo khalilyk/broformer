@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowUpRight, MapPin } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Clock, MapPin } from "lucide-react";
 import GearCta from "@/components/GearCta";
 import PhotoBlock from "@/components/PhotoBlock";
 import Reveal from "@/components/Reveal";
@@ -87,8 +87,22 @@ export default async function StudioPage({
               ))}
             </div>
             <p className="mt-5 text-[17px] leading-relaxed text-ink/80">
-              {studio.description}
+              {studio.about ?? studio.description}
             </p>
+
+            {studio.timetable && (
+              <div className="mt-8 flex gap-3 rounded-2xl bg-paper p-5 shadow-sm ring-1 ring-ink/10">
+                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-cream text-red">
+                  <Clock size={16} strokeWidth={1.75} />
+                </span>
+                <div>
+                  <h3 className="text-sm font-bold text-ink">Hours &amp; Schedule</h3>
+                  <p className="mt-1 text-[13px] leading-relaxed text-ink/60">
+                    {studio.timetable}
+                  </p>
+                </div>
+              </div>
+            )}
 
             <div className="mt-10 rounded-2xl bg-ink px-6 py-10 text-center shadow-sm sm:px-10 sm:py-12">
               <h3 className="font-display text-2xl uppercase text-white sm:text-3xl">
