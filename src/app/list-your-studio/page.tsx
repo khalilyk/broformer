@@ -109,7 +109,7 @@ export default function ListYourStudioPage() {
             <h2 className="font-display text-3xl uppercase leading-[0.95] text-ink sm:text-4xl">
               Why studios list on Broformer
             </h2>
-            <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
               {BENEFITS.map((benefit, i) => (
                 <Reveal key={benefit.title} delay={i * 0.06}>
                   <motion.div
@@ -136,12 +136,11 @@ export default function ListYourStudioPage() {
             </div>
             <p className="mt-8 text-sm leading-relaxed text-ink/50">
               Listings are reviewed within 2 business days. There&apos;s no
-              cost to list. We make money when we help you fill more
-              classes, not before.
+              cost to list.
             </p>
           </Reveal>
 
-          <Reveal delay={0.1} className="mx-auto mt-12 max-w-xl">
+          <Reveal delay={0.1} className="mx-auto mt-12 max-w-3xl">
             <div className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-ink/5 md:p-8">
               {submitted ? (
                 <div className="py-10 text-center">

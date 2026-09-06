@@ -1,3 +1,4 @@
+import FeaturedStudios from "@/components/FeaturedStudios";
 import GearCta from "@/components/GearCta";
 import Hero from "@/components/Hero";
 import LandscapeBand from "@/components/LandscapeBand";
@@ -13,6 +14,7 @@ export default function Home() {
     <main>
       <Hero />
       <MovementBar />
+      <FeaturedStudios />
       <MissionSection />
       <WhySection />
       <StudioTips />

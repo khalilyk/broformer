@@ -1,9 +1,12 @@
 "use client";
 
-import { ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { ChevronDown, Search } from "lucide-react";
+import Link from "next/link";
+import { useMemo, useState } from "react";
 import PageBanner from "@/components/PageBanner";
 import Reveal from "@/components/Reveal";
+import { BENEFITS } from "@/lib/benefits";
+import { getBenefitFaqs } from "@/lib/benefitFaqs";
 
 const FAQS = [
   {
@@ -79,29 +82,133 @@ function AccordionItem({ q, a }: { q: string; a: string }) {
   );
 }
 
+const BENEFIT_GROUPS = BENEFITS.map((benefit) => ({
+  category: benefit.title,
+  slug: benefit.slug as string | undefined,
+  items: getBenefitFaqs(benefit.slug),
+}));
+
+const ALL_GROUPS = [...FAQS.map((g) => ({ ...g, slug: undefined as string | undefined })), ...BENEFIT_GROUPS];
+
+function slugifyCategory(category: string) {
+  return category.toLowerCase().replace(/\s+/g, "-");
+}
+
 export default function FaqPage() {
+  const [query, setQuery] = useState("");
+
+  const filteredGroups = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return ALL_GROUPS;
+    return ALL_GROUPS.map((group) => ({
+      ...group,
+      items: group.items.filter(
+        (item) =>
+          item.q.toLowerCase().includes(q) || item.a.toLowerCase().includes(q)
+      ),
+    })).filter((group) => group.items.length > 0);
+  }, [query]);
+
+  const totalMatches = filteredGroups.reduce((sum, g) => sum + g.items.length, 0);
+
   return (
     <main>
       <PageBanner
         eyebrow="Support"
         title="Frequently asked questions."
-        subtitle="Can't find what you're looking for? Reach out on our Contact page."
+        subtitle="Search below, or browse by category. Can't find what you're looking for? Reach out on our Contact page."
       />
 
-      <section className="bg-cream py-16 md:py-24">
+      <section className="bg-paper py-10 md:py-12">
         <div className="container-x mx-auto max-w-2xl">
-          {FAQS.map((group, gi) => (
-            <Reveal key={group.category} delay={gi * 0.1} className="mb-10">
-              <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-red">
+          <div className="flex items-center gap-3 rounded-full border border-ink/15 bg-cream px-5 py-3.5 shadow-sm focus-within:ring-2 focus-within:ring-red/30">
+            <Search size={18} className="shrink-0 text-ink/50" />
+            <input
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search all questions..."
+              className="w-full bg-transparent text-sm text-ink placeholder:text-ink/45 focus:outline-none"
+            />
+          </div>
+          {query && (
+            <p className="mt-3 text-center text-xs font-semibold uppercase tracking-[0.08em] text-ink/40">
+              {totalMatches} {totalMatches === 1 ? "result" : "results"} for &quot;{query}&quot;
+            </p>
+          )}
+        </div>
+      </section>
+
+      <section className="bg-cream py-16 md:py-24">
+        <div className="container-x grid grid-cols-1 gap-10 lg:grid-cols-[220px_1fr] lg:gap-16">
+          <div className="hidden lg:block">
+            <div className="sticky top-28 space-y-1">
+              <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-ink/40">
+                Categories
+              </span>
+              {ALL_GROUPS.map((group) => (
+                <a
+                  key={group.category}
+                  href={`#${slugifyCategory(group.category)}`}
+                  className="block rounded-lg px-3 py-2 text-sm font-semibold text-ink/60 transition-colors hover:bg-paper hover:text-red"
+                >
+                  {group.category}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex flex-wrap gap-2 lg:hidden">
+            {ALL_GROUPS.map((group) => (
+              <a
+                key={group.category}
+                href={`#${slugifyCategory(group.category)}`}
+                className="rounded-full border border-ink/15 px-3.5 py-1.5 text-xs font-semibold text-ink/70 transition-colors hover:border-red hover:text-red"
+              >
                 {group.category}
-              </h2>
-              <div className="mt-2">
-                {group.items.map((item) => (
-                  <AccordionItem key={item.q} q={item.q} a={item.a} />
-                ))}
+              </a>
+            ))}
+          </div>
+
+          <div className="min-w-0">
+            {filteredGroups.length === 0 ? (
+              <div className="rounded-2xl border border-dashed border-ink/15 px-6 py-16 text-center text-ink/40">
+                No questions match &quot;{query}&quot;. Try a different search, or{" "}
+                <Link href="/contact" className="font-bold text-red hover:text-ink">
+                  contact us
+                </Link>
+                .
               </div>
-            </Reveal>
-          ))}
+            ) : (
+              filteredGroups.map((group, gi) => (
+                <Reveal
+                  key={group.category}
+                  delay={Math.min(gi, 4) * 0.06}
+                  id={slugifyCategory(group.category)}
+                  className="mb-10 scroll-mt-24"
+                >
+                  <div className="flex items-center justify-between gap-4">
+                    <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-red">
+                      {group.category}
+                    </h2>
+                    {group.slug && (
+                      <Link
+                        href={`/benefits/${group.slug}`}
+                        className="text-xs font-bold text-red hover:text-ink"
+                      >
+                        More on {group.category} →
+                      </Link>
+                    )}
+                  </div>
+                  <div className="mt-2">
+                    {group.items.map((item) => (
+                      <AccordionItem key={item.q} q={item.q} a={item.a} />
+                    ))}
+                  </div>
+                </Reveal>
+              ))
+            )}
+          </div>
         </div>
       </section>
     </main>

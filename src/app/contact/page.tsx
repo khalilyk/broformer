@@ -1,19 +1,14 @@
 "use client";
 
-import { ChevronDown, HelpCircle, Mail, MessageCircle, Store } from "lucide-react";
+import { ChevronDown, HelpCircle, MessageCircle, Store } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import PageBanner from "@/components/PageBanner";
 import Reveal from "@/components/Reveal";
 import { FacebookIcon, InstagramIcon, YoutubeIcon } from "@/components/SocialIcons";
+import { sendContactMessage } from "./actions";
 
 const CHANNELS = [
-  {
-    icon: Mail,
-    title: "Email us",
-    detail: "hello@broformer.com",
-    note: "For anything: questions, feedback, press or partnership enquiries all land in the same inbox.",
-  },
   {
     icon: MessageCircle,
     title: "Response time",
@@ -53,6 +48,8 @@ const TOPICS = [
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
   return (
     <main>
@@ -129,18 +126,25 @@ export default function ContactPage() {
                 </div>
               ) : (
                 <form
-                  onSubmit={(e) => {
+                  onSubmit={async (e) => {
                     e.preventDefault();
-                    setSubmitted(true);
+                    setError("");
+                    setSubmitting(true);
+                    try {
+                      const formData = new FormData(e.currentTarget);
+                      await sendContactMessage(formData);
+                      setSubmitted(true);
+                    } catch {
+                      setError("Something went wrong. Please try again.");
+                    } finally {
+                      setSubmitting(false);
+                    }
                   }}
                   className="space-y-4"
                 >
                   <p className="text-sm leading-relaxed text-ink/50">
-                    Fill this out and it goes straight to{" "}
-                    <span className="font-bold text-ink">
-                      hello@broformer.com
-                    </span>
-                    , no ticket numbers, just a reply from our team.
+                    Fill this out and it goes straight to our team, no
+                    ticket numbers, just a reply from a real person.
                   </p>
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <label className="block">
@@ -149,6 +153,7 @@ export default function ContactPage() {
                       </span>
                       <input
                         required
+                        name="name"
                         type="text"
                         className="w-full rounded-xl border border-ink/15 bg-cream px-4 py-3 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-red/30"
                       />
@@ -159,6 +164,7 @@ export default function ContactPage() {
                       </span>
                       <input
                         required
+                        name="email"
                         type="email"
                         className="w-full rounded-xl border border-ink/15 bg-cream px-4 py-3 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-red/30"
                       />
@@ -171,6 +177,7 @@ export default function ContactPage() {
                     <div className="relative">
                     <select
                       required
+                      name="topic"
                       defaultValue=""
                       className="w-full appearance-none rounded-xl border border-ink/15 bg-cream px-4 py-3 pr-10 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-red/30"
                     >
@@ -195,15 +202,22 @@ export default function ContactPage() {
                     </span>
                     <textarea
                       required
+                      name="message"
                       rows={5}
                       className="w-full rounded-xl border border-ink/15 bg-cream px-4 py-3 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-red/30"
                     />
                   </label>
+                  {error && (
+                    <p className="rounded-lg bg-red/10 px-3 py-2 text-xs font-semibold text-red">
+                      {error}
+                    </p>
+                  )}
                   <button
                     type="submit"
-                    className="w-full cursor-pointer rounded-full bg-red px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.1em] text-white transition-all duration-300 hover:bg-ink active:scale-95"
+                    disabled={submitting}
+                    className="w-full cursor-pointer rounded-full bg-red px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.1em] text-white transition-all duration-300 hover:bg-ink active:scale-95 disabled:opacity-60"
                   >
-                    Send Message
+                    {submitting ? "Sending..." : "Send Message"}
                   </button>
                   <p className="text-center text-[12px] text-ink/40">
                     We read every message ourselves. No auto-responders.
