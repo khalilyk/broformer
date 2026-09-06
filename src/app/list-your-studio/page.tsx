@@ -1,10 +1,11 @@
 "use client";
 
-import { BadgeCheck, CalendarCheck, CheckCircle2, ListChecks, MapPin, PenTool, Search } from "lucide-react";
+import { BadgeCheck, CalendarCheck, CheckCircle2, ImagePlus, ListChecks, MapPin, PenTool, Search } from "lucide-react";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import PageBanner from "@/components/PageBanner";
 import Reveal from "@/components/Reveal";
+import { submitStudioListing } from "./actions";
 
 type PlaceResult = {
   place_id: number;
@@ -45,6 +46,9 @@ const BENEFITS = [
 
 export default function ListYourStudioPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
+  const [photoName, setPhotoName] = useState("");
 
   const [placeQuery, setPlaceQuery] = useState("");
   const [placeResults, setPlaceResults] = useState<PlaceResult[]>([]);
@@ -152,19 +156,29 @@ export default function ListYourStudioPage() {
                 </div>
               ) : (
                 <form
-                  onSubmit={(e) => {
+                  onSubmit={async (e) => {
                     e.preventDefault();
-                    setSubmitted(true);
+                    setError("");
+                    setSubmitting(true);
+                    try {
+                      const formData = new FormData(e.currentTarget);
+                      await submitStudioListing(formData);
+                      setSubmitted(true);
+                    } catch {
+                      setError("Something went wrong. Please try again.");
+                    } finally {
+                      setSubmitting(false);
+                    }
                   }}
                   className="space-y-4"
                 >
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                    <Field label="Studio name" placeholder="e.g. Iron Reform" />
-                    <Field label="Contact name" placeholder="Your name" />
+                    <Field name="studioName" label="Studio name" placeholder="e.g. Iron Reform" />
+                    <Field name="contactName" label="Contact name" placeholder="Your name" />
                   </div>
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                    <Field label="Contact number" type="tel" placeholder="e.g. +61 400 000 000" />
-                    <Field label="Email" type="email" placeholder="you@studio.com" />
+                    <Field name="contactNumber" label="Contact number" type="tel" placeholder="e.g. +61 400 000 000" />
+                    <Field name="email" label="Email" type="email" placeholder="you@studio.com" />
                   </div>
 
                   <label className="relative block">
@@ -208,12 +222,14 @@ export default function ListYourStudioPage() {
 
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <Field
+                      name="city"
                       label="City"
                       placeholder="e.g. Sydney"
                       value={city}
                       onChange={setCity}
                     />
                     <Field
+                      name="country"
                       label="Country"
                       placeholder="e.g. Australia"
                       value={country}
@@ -221,28 +237,64 @@ export default function ListYourStudioPage() {
                     />
                   </div>
                   <Field
+                    name="googleMapsLink"
                     label="Google Maps link"
                     placeholder="Paste your studio's Google Maps link"
                     value={mapsLink}
                     onChange={setMapsLink}
                   />
-                  <Field label="Website (optional)" placeholder="https://" required={false} />
+                  <Field name="website" label="Website (optional)" placeholder="https://" required={false} />
+
+                  <label className="block">
+                    <span className="mb-1.5 block text-xs font-semibold uppercase tracking-[0.08em] text-ink/50">
+                      Studio photo (optional)
+                    </span>
+                    <div className="relative flex items-center gap-3 rounded-xl border border-dashed border-ink/20 bg-cream px-4 py-3">
+                      <ImagePlus size={16} className="shrink-0 text-ink/40" />
+                      <span className="flex-1 truncate text-sm text-ink/60">
+                        {photoName || "Upload a photo of your studio"}
+                      </span>
+                      <span className="shrink-0 rounded-full bg-white px-3 py-1.5 text-xs font-semibold text-ink ring-1 ring-ink/10">
+                        Choose file
+                      </span>
+                      <input
+                        type="file"
+                        name="photo"
+                        accept="image/*"
+                        onChange={(e) => setPhotoName(e.target.files?.[0]?.name ?? "")}
+                        className="absolute inset-0 h-full w-full cursor-pointer opacity-0"
+                      />
+                    </div>
+                    <span className="mt-1.5 block text-[11px] text-ink/40">
+                      Rights-cleared photos only, please. This is used on your listing once approved.
+                    </span>
+                  </label>
+
                   <label className="block">
                     <span className="mb-1.5 block text-xs font-semibold uppercase tracking-[0.08em] text-ink/50">
                       Tell us about your studio
                     </span>
                     <textarea
                       required
+                      name="message"
                       rows={4}
                       placeholder="Class types, schedule, what makes your studio a good fit for men's classes..."
                       className="w-full rounded-xl border border-ink/15 bg-cream px-4 py-3 text-sm text-ink placeholder:text-ink/40 focus:outline-none focus:ring-2 focus:ring-red/30"
                     />
                   </label>
+
+                  {error && (
+                    <p className="rounded-lg bg-red/10 px-3 py-2 text-xs font-semibold text-red">
+                      {error}
+                    </p>
+                  )}
+
                   <button
                     type="submit"
-                    className="w-full cursor-pointer rounded-full bg-red px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.1em] text-white transition-all duration-300 hover:bg-ink active:scale-95"
+                    disabled={submitting}
+                    className="w-full cursor-pointer rounded-full bg-red px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.1em] text-white transition-all duration-300 hover:bg-ink active:scale-95 disabled:opacity-60"
                   >
-                    Submit Studio
+                    {submitting ? "Submitting..." : "Submit Studio"}
                   </button>
                 </form>
               )}
@@ -255,6 +307,7 @@ export default function ListYourStudioPage() {
 }
 
 function Field({
+  name,
   label,
   type = "text",
   placeholder,
@@ -262,6 +315,7 @@ function Field({
   value,
   onChange,
 }: {
+  name: string;
   label: string;
   type?: string;
   placeholder?: string;
@@ -276,6 +330,7 @@ function Field({
       </span>
       <input
         required={required}
+        name={name}
         type={type}
         placeholder={placeholder}
         value={value}

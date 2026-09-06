@@ -11,6 +11,13 @@ export function generateStaticParams() {
   return STUDIOS.map((s) => ({ slug: s.slug }));
 }
 
+function splitIntoParagraphs(text: string): string[] {
+  const sentences = text.split(/(?<=[.!?])\s+/).filter(Boolean);
+  if (sentences.length <= 2) return [text];
+  const mid = Math.ceil(sentences.length / 2);
+  return [sentences.slice(0, mid).join(" "), sentences.slice(mid).join(" ")];
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -86,9 +93,13 @@ export default async function StudioPage({
                 </span>
               ))}
             </div>
-            <p className="mt-5 text-[17px] leading-relaxed text-ink/80">
-              {studio.about ?? studio.description}
-            </p>
+            <div className="mt-5 space-y-4">
+              {splitIntoParagraphs(studio.about ?? studio.description).map((paragraph, i) => (
+                <p key={i} className="text-[17px] leading-relaxed text-ink/80">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
 
             {studio.timetable && (
               <div className="mt-8 flex gap-3 rounded-2xl bg-paper p-5 shadow-sm ring-1 ring-ink/10">

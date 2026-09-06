@@ -17,6 +17,12 @@ enum PageStatus {
   PUBLISHED
 }
 
+enum SubmissionStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
 model User {
   id           String   @id @default(cuid())
   email        String   @unique
@@ -86,5 +92,24 @@ model AuditLog {
   actorId   String?
   createdAt DateTime @default(now())
 
+  @@index([createdAt])
+}
+
+model StudioSubmission {
+  id              String           @id @default(cuid())
+  studioName      String
+  contactName     String
+  contactNumber   String
+  email           String
+  city            String
+  country         String
+  googleMapsLink  String
+  website         String           @default("")
+  message         String           @default("")
+  photoUrl        String           @default("")
+  status          SubmissionStatus @default(PENDING)
+  createdAt       DateTime         @default(now())
+
+  @@index([status])
   @@index([createdAt])
 }

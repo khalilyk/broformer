@@ -8,6 +8,7 @@ import {
   ExternalLink,
   FileText,
   Image as ImageIcon,
+  Inbox,
   LayoutDashboard,
   LogOut,
   Search,
@@ -19,6 +20,7 @@ import Logo from "@/components/Logo";
 const NAV = [
   { label: "Overview", href: "/admin", icon: LayoutDashboard },
   { label: "Pages", href: "/admin/pages", icon: FileText },
+  { label: "Submissions", href: "/admin/submissions", icon: Inbox },
   { label: "Media Library", href: "/admin/media", icon: ImageIcon },
   { label: "Users", href: "/admin/users", icon: Users },
   { label: "Analytics", href: "/admin/analytics", icon: BarChart3 },

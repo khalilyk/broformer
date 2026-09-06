@@ -155,3 +155,18 @@ export async function changeOwnPassword(formData: FormData) {
   await logAudit(user.id, "changed password for", record.email);
   revalidatePath("/admin/security");
 }
+
+// --- Studio Submissions ---
+
+export async function updateSubmissionStatus(
+  id: string,
+  status: "PENDING" | "APPROVED" | "REJECTED"
+) {
+  const user = await requireUser();
+  const submission = await db.studioSubmission.update({
+    where: { id },
+    data: { status },
+  });
+  await logAudit(user.id, `marked submission ${status.toLowerCase()} for`, submission.studioName);
+  revalidatePath("/admin/submissions");
+}
