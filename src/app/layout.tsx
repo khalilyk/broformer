@@ -14,10 +14,27 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+const TITLE = "Broformer: The Global Home of Men's Reformer Pilates";
+const DESCRIPTION =
+  "Find men's reformer Pilates classes around the world. Broformer is the global directory and movement connecting men with studios building a stronger, more mobile community.";
+
 export const metadata: Metadata = {
-  title: "Broformer: The Global Home of Men's Reformer Pilates",
-  description:
-    "Find men's reformer Pilates classes around the world. Broformer is the global directory and movement connecting men with studios building a stronger, more mobile community.",
+  metadataBase: new URL("https://www.broformer.com"),
+  title: TITLE,
+  description: DESCRIPTION,
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: "/",
+    siteName: "Broformer",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
