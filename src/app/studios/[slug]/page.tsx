@@ -82,6 +82,22 @@ export default async function StudioPage({
             </div>
           </Reveal>
 
+          {studio.address && (
+            <Reveal delay={0.05} className="mt-6">
+              <div className="overflow-hidden rounded-2xl ring-1 ring-ink/10">
+                <iframe
+                  title={`Map showing the location of ${studio.name}`}
+                  src={`https://maps.google.com/maps?q=${encodeURIComponent(
+                    studio.address
+                  )}&output=embed`}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="h-[320px] w-full border-0 md:h-[420px]"
+                />
+              </div>
+            </Reveal>
+          )}
+
           <Reveal delay={0.1} className="mx-auto mt-10 max-w-2xl">
             <div className="flex flex-wrap gap-1.5">
               {studio.classTypes.map((t) => (
