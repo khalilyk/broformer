@@ -93,6 +93,31 @@ export default async function StudioPage({
                 </span>
               ))}
             </div>
+
+            {studio.address && (
+              <div className="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-paper px-5 py-4 shadow-sm ring-1 ring-ink/10">
+                <div className="flex items-start gap-3">
+                  <span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full bg-cream text-red">
+                    <MapPin size={15} strokeWidth={1.75} />
+                  </span>
+                  <p className="text-[13px] leading-relaxed text-ink/70">
+                    {studio.address}
+                  </p>
+                </div>
+                {studio.mapsUrl && (
+                  <a
+                    href={studio.mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex shrink-0 items-center gap-1 text-xs font-bold uppercase tracking-[0.06em] text-red hover:text-ink"
+                  >
+                    Get Directions
+                    <ArrowUpRight size={12} />
+                  </a>
+                )}
+              </div>
+            )}
+
             <div className="mt-5 space-y-4">
               {splitIntoParagraphs(studio.about ?? studio.description).map((paragraph, i) => (
                 <p key={i} className="text-[17px] leading-relaxed text-ink/80">
