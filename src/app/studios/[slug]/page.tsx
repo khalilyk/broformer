@@ -83,35 +83,17 @@ export default async function StudioPage({
           </Reveal>
 
           {studio.address && (
-            <Reveal delay={0.05} className="mt-6">
-              <div className="overflow-hidden rounded-2xl ring-1 ring-ink/10">
-                <iframe
-                  title={`Map showing the location of ${studio.name}`}
-                  src={`https://maps.google.com/maps?q=${encodeURIComponent(
-                    studio.address
-                  )}&output=embed`}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="h-[320px] w-full border-0 md:h-[420px]"
-                />
-              </div>
-            </Reveal>
-          )}
-
-          <Reveal delay={0.1} className="mx-auto mt-10 max-w-2xl">
-            <div className="flex flex-wrap gap-1.5">
-              {studio.classTypes.map((t) => (
-                <span
-                  key={t}
-                  className="rounded-full bg-paper px-3 py-1 text-xs font-semibold text-ink/60 ring-1 ring-ink/10"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
-
-            {studio.address && (
-              <div className="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-paper px-5 py-4 shadow-sm ring-1 ring-ink/10">
+            <Reveal delay={0.05} className="mt-6 overflow-hidden rounded-2xl bg-paper shadow-sm ring-1 ring-ink/10">
+              <iframe
+                title={`Map showing the location of ${studio.name}`}
+                src={`https://maps.google.com/maps?q=${encodeURIComponent(
+                  studio.address
+                )}&output=embed`}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="h-[280px] w-full border-0 md:h-[360px]"
+              />
+              <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-4">
                 <div className="flex items-start gap-3">
                   <span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full bg-cream text-red">
                     <MapPin size={15} strokeWidth={1.75} />
@@ -132,7 +114,20 @@ export default async function StudioPage({
                   </a>
                 )}
               </div>
-            )}
+            </Reveal>
+          )}
+
+          <Reveal delay={0.1} className="mx-auto mt-10 max-w-2xl">
+            <div className="flex flex-wrap gap-1.5">
+              {studio.classTypes.map((t) => (
+                <span
+                  key={t}
+                  className="rounded-full bg-paper px-3 py-1 text-xs font-semibold text-ink/60 ring-1 ring-ink/10"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
 
             <div className="mt-5 space-y-4">
               {splitIntoParagraphs(studio.about ?? studio.description).map((paragraph, i) => (
