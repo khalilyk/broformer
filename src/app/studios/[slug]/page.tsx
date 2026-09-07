@@ -93,12 +93,12 @@ export default async function StudioPage({
                 referrerPolicy="no-referrer-when-downgrade"
                 className="h-[280px] w-full border-0 md:h-[360px]"
               />
-              <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-4">
-                <div className="flex items-start gap-3">
-                  <span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full bg-cream text-red">
+              <div className="flex flex-nowrap items-center justify-center gap-3 overflow-hidden px-5 py-4">
+                <div className="flex min-w-0 items-center gap-3">
+                  <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-cream text-red">
                     <MapPin size={15} strokeWidth={1.75} />
                   </span>
-                  <p className="text-[13px] leading-relaxed text-ink/70">
+                  <p className="truncate text-[13px] leading-relaxed text-ink/70">
                     {studio.address}
                   </p>
                 </div>
